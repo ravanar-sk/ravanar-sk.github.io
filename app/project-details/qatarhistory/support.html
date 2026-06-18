@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support - Qatar History & Culture Application</title>
+  <meta name="description" content="Get help, contact our support team, and read frequently asked questions about the Qatar History &amp; Culture mobile application.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #121216;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(255, 255, 255, 0.08);
+      
+      --primary: #8A1538; /* Qatari Maroon */
+      --primary-hover: #b31c49;
+      --accent: #D4AF37; /* Luxury Gold */
+      --accent-hover: #f3ca4d;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --text-muted: #626270;
+      
+      --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(18, 18, 22, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .logo-badge {
+      background: var(--primary);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 10px rgba(138, 21, 56, 0.5);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Main Layout container */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    /* Premium Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: radial-gradient(circle at center, rgba(138, 21, 56, 0.15) 0%, rgba(10, 10, 12, 0) 70%);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Glassmorphic Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      margin-bottom: 24px;
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      background-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--primary);
+      color: #fff;
+      border: 1px solid var(--accent);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(138, 21, 56, 0.3);
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(138, 21, 56, 0.5);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Accordion FAQs */
+    .accordion-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      text-align: left;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 8px 0;
+    }
+
+    .accordion-header:hover {
+      color: var(--accent);
+    }
+
+    .accordion-icon {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .accordion-icon::before, .accordion-icon::after {
+      content: '';
+      position: absolute;
+      background-color: currentColor;
+      transition: var(--transition);
+    }
+
+    .accordion-icon::before {
+      top: 7px;
+      left: 0;
+      width: 16px;
+      height: 2px;
+    }
+
+    .accordion-icon::after {
+      top: 0;
+      left: 7px;
+      width: 2px;
+      height: 16px;
+    }
+
+    .active .accordion-icon {
+      transform: rotate(135deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .accordion-content p {
+      padding-top: 12px;
+    }
+
+    /* Footer Section */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Toast Notifications */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(18, 18, 22, 0.95);
+      border: 1px solid var(--accent);
+      color: var(--text-primary);
+      padding: 16px 24px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-success-icon {
+      color: var(--accent);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-badge">🇶🇦</div>
+        <div>Qatar<span>History</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Application Support</h1>
+    <p>We're here to help you discover the rich heritage, lineage of rulers, and landmarks of Qatar.</p>
+  </section>
+
+  <!-- Content Grid -->
+  <main class="container">
+    <div class="grid">
+      
+      <!-- Left Column: Contact Details -->
+      <section class="card" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" style="margin-bottom: 16px;">Contact Support</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
+          Have questions, feedback, or need technical assistance with the Qatar History &amp; Culture application?
+        </p>
+        
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 24px;">
+          <div style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Direct Support Email</div>
+          <a href="mailto:development.ravanar@gmail.com" style="font-size: 1.5rem; font-weight: 700; color: var(--accent); font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;">development.ravanar@gmail.com</a>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+          Our typical response time is within 24 to 48 hours. Please include your app version and device model (Android/iOS) for faster assistance.
+        </p>
+
+        <a href="mailto:development.ravanar@gmail.com" class="btn" style="width: 100%; text-decoration: none;">Email Support Team</a>
+      </section>
+
+      <!-- Right Column: FAQs -->
+      <section class="card" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" style="margin-bottom: 24px;">Frequently Asked Questions</h2>
+        
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" id="faq-lang-btn">
+            How do I switch the language?
+            <span class="accordion-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>You can toggle between English and Arabic at any time by tapping the "EN / العربية" language button located in the app's top header bar. The user interface and historical articles update instantly.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" id="faq-offline-btn">
+            Does the app require internet?
+            <span class="accordion-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>No, the Qatar History &amp; Culture app is designed to function entirely offline. All localizations, timeline events, historical details, and image references are bundled locally on your device.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" id="faq-ads-btn">
+            Why are there ads in the app?
+            <span class="accordion-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>We display small, non-intrusive banner advertisements at the bottom of the pages to support the ongoing updates and preservation of this educational project. Ads do not cover any main textual content.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" id="faq-bug-btn">
+            How do I report a typo or bug?
+            <span class="accordion-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>Please use the contact form on this page or email us directly at <a href="mailto:development.ravanar@gmail.com">development.ravanar@gmail.com</a>. We appreciate all user feedback to improve accuracy.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Ravanar. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // FAQ Accordion interactive logic
+    function toggleAccordion(button) {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !isExpanded);
+      
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('.accordion-icon');
+      
+      if (!isExpanded) {
+        button.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        button.classList.remove('active');
+        content.style.maxHeight = '0px';
+      }
+    }
+
+  </script>
+</body>
+</html>

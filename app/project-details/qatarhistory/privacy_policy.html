@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Qatar History & Culture Application</title>
+  <meta name="description" content="Read the privacy policy for the Qatar History &amp; Culture mobile application. Understand how we handle your data, device permissions, and advertising configurations.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #121216;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(255, 255, 255, 0.08);
+      
+      --primary: #8A1538; /* Qatari Maroon */
+      --primary-hover: #b31c49;
+      --accent: #D4AF37; /* Luxury Gold */
+      --accent-hover: #f3ca4d;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --text-muted: #626270;
+      
+      --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(18, 18, 22, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .logo-badge {
+      background: var(--primary);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 10px rgba(138, 21, 56, 0.5);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Main Layout container */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    /* Premium Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: radial-gradient(circle at center, rgba(138, 21, 56, 0.15) 0%, rgba(10, 10, 12, 0) 70%);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Glassmorphic Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      margin-bottom: 24px;
+    }
+
+    /* Footer Section */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Specific styles for legal/documentation layouts */
+    .policy-grid {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 40px;
+    }
+    
+    .toc {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+    
+    .toc h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .toc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .toc a {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    
+    .toc a:hover {
+      color: var(--accent-hover);
+      padding-left: 4px;
+    }
+    
+    .policy-content section {
+      margin-bottom: 40px;
+      scroll-margin-top: 100px;
+    }
+    
+    .policy-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+    }
+    
+    .policy-content p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+    }
+    
+    .policy-content ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    @media (max-width: 900px) {
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+      .toc {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-badge">🇶🇦</div>
+        <div>Qatar<span>History</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Privacy Policy</h1>
+    <p>Last Updated: June 18, 2026</p>
+  </section>
+
+  <!-- Content Grid -->
+  <main class="container">
+    <div class="policy-grid">
+      
+      <!-- Left Column: Table of Contents -->
+      <aside class="toc card" aria-label="Table of Contents">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#data-collection">2. Data Collection</a></li>
+          <li><a href="#third-party-services">3. Third-Party Ads</a></li>
+          <li><a href="#permissions">4. App Permissions</a></li>
+          <li><a href="#childrens-privacy">5. Children's Privacy</a></li>
+          <li><a href="#user-rights">6. Your Rights</a></li>
+          <li><a href="#contact-us">7. Contact Information</a></li>
+        </ul>
+      </aside>
+
+      <!-- Right Column: Policy Details -->
+      <article class="card policy-content">
+        
+        <section id="introduction">
+          <h2>1. Introduction</h2>
+          <p>Welcome to the Qatar History &amp; Culture mobile application (the "App"), developed by Ravanar. We are committed to protecting your privacy. This Privacy Policy describes how we handle any information when you download, install, and use our App.</p>
+          <p>By using the App, you agree to the collection and use of information in accordance with this policy.</p>
+        </section>
+
+        <section id="data-collection">
+          <h2>2. Data Collection &amp; Use</h2>
+          <p><strong>Offline-First Architecture:</strong> The App is designed as an offline-first learning resource. We do not collect or store any personally identifiable information (such as your name, email address, physical address, or phone number) directly on our servers while you browse the historical timelines, rulers, or cultural landmarks.</p>
+          <p><strong>Local Preferences:</strong> The App saves user preferences, such as language toggles (English or Arabic) and theme preferences (Light or Dark mode), locally on your device via shared storage. This data remains on your device and is not transmitted to us.</p>
+        </section>
+
+        <section id="third-party-services">
+          <h2>3. Third-Party Advertising (Google AdMob)</h2>
+          <p>The App displays banner advertisements powered by Google AdMob to support maintenance and operational updates. While we do not collect personal information, AdMob may access certain device identifiers to serve contextual or personalized ads.</p>
+          <p>Google AdMob may collect and process:</p>
+          <ul>
+            <li>IP addresses (used to determine general country/city locations).</li>
+            <li>Mobile advertising identifiers (such as Android Advertising ID or iOS IDFA).</li>
+            <li>Device model, manufacturer, operating system version, and system language settings.</li>
+            <li>App performance logs and diagnostic statistics.</li>
+          </ul>
+          <p>For more details on how Google processes this data, please review the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy &amp; Terms</a>.</p>
+        </section>
+
+        <section id="permissions">
+          <h2>4. Device Permissions</h2>
+          <p>To provide all intended features, the App requires the following device permissions:</p>
+          <ul>
+            <li><strong>Internet Access:</strong> Required to query and display banner advertisements from Google AdMob servers.</li>
+            <li><strong>Network State Access:</strong> Allows the App to monitor whether a connection is active, optimizing ad loading attempts.</li>
+          </ul>
+        </section>
+
+        <section id="childrens-privacy">
+          <h2>5. Children's Privacy</h2>
+          <p>The App provides educational content suitable for general audiences, including children interested in Qatari history. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal details, please contact us so we can take immediate action.</p>
+        </section>
+
+        <section id="user-rights">
+          <h2>6. Your Choices &amp; Rights</h2>
+          <p>You can manage how ads are personalized or opt-out of ad tracking by adjusting your mobile device's settings:</p>
+          <ul>
+            <li><strong>Android:</strong> Go to Settings &gt; Privacy &gt; Ads, and choose to "Reset advertising ID" or "Opt out of Ads Personalization".</li>
+            <li><strong>iOS:</strong> Go to Settings &gt; Privacy &gt; Tracking, and disable "Allow Apps to Request to Track".</li>
+          </ul>
+        </section>
+
+        <section id="contact-us">
+          <h2>7. Contact Information</h2>
+          <p>If you have any questions or suggestions regarding our Privacy Policy or the practices of this App, please feel free to reach out to us:</p>
+          <ul>
+            <li>Email: <a href="mailto:development.ravanar@gmail.com">development.ravanar@gmail.com</a></li>
+            <li>Website: <a href="https://ravanar-sk.github.io/" target="_blank" rel="noopener noreferrer">www.ravanar-sk.github.io/</a></li>
+          </ul>
+        </section>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Ravanar. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
