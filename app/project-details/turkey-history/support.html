@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support - Turkey History Encyclopedia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151c2c;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #d97706; /* Warm Gold */
+            --accent-hover: #b45309;
+            --border: #1e293b;
+            --card-hover: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+        }
+
+        .app-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .support-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .support-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .support-email {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 1rem 0;
+            word-break: break-all;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        h2.section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+            padding-bottom: 1.2rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .container {
+                padding: 2rem 1.5rem;
+                border-radius: 12px;
+            }
+            .app-logo {
+                font-size: 1.8rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="app-logo">Turkey History</div>
+        <h1>Support & Help Center</h1>
+        <p>Get assistance, read FAQs, or get in touch with the developer.</p>
+    </header>
+
+    <main>
+        <div class="support-card">
+            <h2>Direct Email Support</h2>
+            <p>For feature requests, bug reports, localization suggestions, or general queries:</p>
+            <div class="support-email">development.ravanar@gmail.com</div>
+            <a href="mailto:development.ravanar@gmail.com" class="btn">Send an Email</a>
+        </div>
+
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">Does the app require internet connection?</div>
+            <p class="faq-answer">No. <strong>Turkey History</strong> is designed as a 100% offline encyclopedia. All texts, content, images, timeline data, and quiz trivia are stored locally on your device. You can use all its features in airplane mode or in remote historical areas without cellular service.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I change the language or layout direction (RTL)?</div>
+            <p class="faq-answer">Navigate to the <strong>Settings</strong> screen (gear icon in the bottom menu) and choose your preferred language. The app supports English, Turkish, and Arabic. Selecting Arabic automatically updates the interface layout to Right-to-Left (RTL) mode immediately without requiring an app restart.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is my reading and quiz progress saved?</div>
+            <p class="faq-answer">Yes. Your reading progress status, bookmarks, favorites, and quiz achievements are stored locally in a secure SQLite database on your device. Since the app respects your privacy and works offline, this data is not shared or backed up to any cloud server.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Will my data be lost if I delete the app?</div>
+            <p class="faq-answer">Yes. Because all bookmarks, quiz scores, and settings are saved locally on your phone, uninstalling the app will delete this local database. We recommend keeping the app installed to preserve your progress history.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How can I report content corrections or typos?</div>
+            <p class="faq-answer">We strive for maximum accuracy in all historical information. If you find any factual discrepancy, formatting error, or translation bug, please send us an email at <a href="mailto:development.ravanar@gmail.com">development.ravanar@gmail.com</a> with a brief description or screenshot. We will review and address it in the next update.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 K.R. Saravana Kumar. All rights reserved.</p>
+    </footer>
+</div>
+
+</body>
+</html>
