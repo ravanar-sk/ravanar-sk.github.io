@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - BScore Badminton Score Tracker</title>
+  <style>
+    :root {
+      --primary-color: #0f4c81;
+      --accent-color: #2e7d32;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #38bdf8;
+        --accent-color: #4ade80;
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 48px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    .app-badge {
+      display: inline-block;
+      background: rgba(15, 76, 129, 0.1);
+      color: var(--primary-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .last-updated {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      color: var(--text-main);
+      border-left: 4px solid var(--primary-color);
+      padding-left: 12px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-card {
+      background: rgba(46, 125, 50, 0.08);
+      border: 1px solid rgba(46, 125, 50, 0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .highlight-card strong {
+      color: var(--accent-color);
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="app-badge">🏸 BScore Companion App</span>
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last Updated: October 11, 2026</p>
+    </header>
+
+    <div class="highlight-card">
+      <strong>Your Privacy Comes First:</strong> BScore is designed with complete privacy in mind. We do not collect, store, sell, or transmit any of your personal data, location data, or match history to remote servers. Everything stays private on your own device.
+    </div>
+
+    <h2>1. Introduction</h2>
+    <p>
+      This Privacy Policy applies to the <strong>BScore</strong> application across all supported platforms, including iOS, Apple Watch (watchOS), Android mobile, and Wear OS companion devices (collectively referred to as the "App").
+    </p>
+    <p>
+      By using BScore, you agree to the terms outlined in this policy.
+    </p>
+
+    <h2>2. Information We Do NOT Collect</h2>
+    <p>BScore is an offline-first badminton scoring and tracking tool. We do not require account registration or cloud sign-in. Specifically:</p>
+    <ul>
+      <li><strong>No Personal Identification:</strong> We do not ask for or collect your name, email address, phone number, or physical address.</li>
+      <li><strong>No Location Data:</strong> The App does not access, track, or request your GPS or device location.</li>
+      <li><strong>No Analytics or Tracking:</strong> We do not integrate any third-party tracking software, advertising identifiers (IDFA / GAID), or telemetry SDKs.</li>
+      <li><strong>No Financial Information:</strong> We do not collect or store credit card, payment, or banking information.</li>
+    </ul>
+
+    <h2>3. Information Stored Locally on Your Device</h2>
+    <p>
+      Any match information you create within the App is stored purely in an encrypted local database (SQLite) directly on your device. This includes:
+    </p>
+    <ul>
+      <li>Custom player rosters and nicknames entered for match tracking.</li>
+      <li>Match history, scores, set statistics, and winner outcomes.</li>
+      <li>App appearance preferences (Dark, Light, or System appearance mode).</li>
+    </ul>
+    <p>
+      This data never leaves your physical device and can be erased at any time simply by clearing the App's data or uninstalling the App.
+    </p>
+
+    <h2>4. Smartwatch & Wearable Communication</h2>
+    <p>
+      BScore offers companion wrist scoring on Apple Watch and Wear OS devices. Communication between your smartphone and smartwatch occurs using official local system communication protocols:
+    </p>
+    <ul>
+      <li><strong>Apple Watch:</strong> Utilizes Apple's native <code>WatchConnectivity</code> framework over direct Bluetooth and local Wi-Fi.</li>
+      <li><strong>Wear OS:</strong> Utilizes Google Play Services <code>Wearable Data Layer</code> directly between paired devices.</li>
+    </ul>
+    <p>
+      All scoring events, undo commands, and game state updates are exchanged exclusively between your paired phone and watch. No data is routed through external cloud servers.
+    </p>
+
+    <h2>5. Third-Party Services & Advertising</h2>
+    <p>
+      BScore does not display third-party advertisements and does not share any information with third-party advertising networks or data brokers.
+    </p>
+
+    <h2>6. Children’s Privacy</h2>
+    <p>
+      Our App does not collect any personal information from anyone, including children under the age of 13. BScore is compliant with the Children's Online Privacy Protection Act (COPPA) and the General Data Protection Regulation (GDPR).
+    </p>
+
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>
+      We may occasionally update this Privacy Policy to reflect app updates or legal requirements. Any modifications will be posted directly to this page with an updated "Last Updated" date.
+    </p>
+
+    <h2>8. Contact Us</h2>
+    <p>
+      If you have questions, feedback, or concerns regarding this Privacy Policy or your privacy while using BScore, please contact:
+    </p>
+    <p>
+      <strong>Developer:</strong> Saravana<br>
+      <strong>App:</strong> BScore - Badminton Score Tracking<br>
+      <strong>Email:</strong> <a href="mailto:development.ravanar@gmail.com">development.ravanar@gmail.com</a>
+    </p>
+
+    <footer>
+      <span>&copy; 2026 BScore. All rights reserved.</span>
+      <span><a href="support.html">Need Help? Visit Support</a></span>
+    </footer>
+  </div>
+</body>
+</html>

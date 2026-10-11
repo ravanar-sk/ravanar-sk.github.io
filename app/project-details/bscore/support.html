@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support & Help Center - BScore</title>
+  <style>
+    :root {
+      --primary-color: #0f4c81;
+      --accent-color: #2e7d32;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #38bdf8;
+        --accent-color: #4ade80;
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 48px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    .app-badge {
+      display: inline-block;
+      background: rgba(15, 76, 129, 0.1);
+      color: var(--primary-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .contact-card {
+      background: rgba(15, 76, 129, 0.06);
+      border: 1px solid rgba(15, 76, 129, 0.18);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 28px 0;
+      text-align: center;
+    }
+
+    .contact-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--primary-color);
+    }
+
+    .btn-contact {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: #ffffff !important;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-contact:hover {
+      opacity: 0.9;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--primary-color);
+      padding-left: 12px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .faq-answer {
+      color: var(--text-main);
+      font-size: 0.975rem;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="app-badge">🏸 BScore Support Center</span>
+      <h1>How can we help?</h1>
+      <p class="subtitle">Official support documentation and FAQ for BScore on iOS, Apple Watch, Android & Wear OS.</p>
+    </header>
+
+    <div class="contact-card">
+      <h3>Need direct assistance?</h3>
+      <p>Have a question, feature request, or need help with match setup?</p>
+      <a href="mailto:development.ravanar@gmail.com?subject=BScore%20Support%20Inquiry" class="btn-contact">Contact Support Email</a>
+      <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">
+        Or email us directly at: <strong>development.ravanar@gmail.com</strong>
+      </p>
+    </div>
+
+    <h2>Frequently Asked Questions (FAQ)</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">1. How do I start a Singles or Doubles match?</div>
+      <div class="faq-answer">
+        From the main screen, tap <strong>New Game</strong>. Choose between <strong>Singles</strong> or <strong>Doubles</strong>, select your target score (standard BWF is 21 points), pick the initial server, and enter player names. Tap <strong>Start Match</strong> to launch the live interactive court.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">2. How does court positioning and server tracking work?</div>
+      <div class="faq-answer">
+        BScore strictly implements official Badminton World Federation (BWF) rules:
+        <ul>
+          <li>The serving player is highlighted with a shuttlecock badge and illuminated box.</li>
+          <li>In doubles, court rotations and receiving diagonal boxes update automatically when points are scored.</li>
+          <li>Even scores serve from the right court; odd scores serve from the left court.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">3. How do I connect and score from my Apple Watch?</div>
+      <div class="faq-answer">
+        Install BScore on both your iPhone and paired Apple Watch. Once a game is active on your phone, open the BScore watch app:
+        <ul>
+          <li>Tap the top card to score for Side A.</li>
+          <li>Tap the bottom card to score for Side B.</li>
+          <li>Use <strong>Undo</strong> to revert a mistaken point.</li>
+          <li>Use <strong>Switch</strong> to swap court ends.</li>
+        </ul>
+        Both devices communicate via Apple's native WatchConnectivity in real time.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">4. How do I connect and score from my Wear OS Smartwatch?</div>
+      <div class="faq-answer">
+        Ensure your Wear OS smartwatch is paired with your Android phone. Launch the BScore watch app from your watch's app launcher. It will instantly connect via the Google Play Wearable Data Layer and reflect the ongoing game. You can score directly from your wrist with tactile vibration feedback.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">5. Can I undo a point or change court sides?</div>
+      <div class="faq-answer">
+        Yes! Tap the <strong>Undo</strong> button on either the phone or the watch to reverse any score or rotation mistake. Tap <strong>Switch Ends</strong> to swap court sides at intervals or between games.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">6. Does BScore require an active internet connection?</div>
+      <div class="faq-answer">
+        No! BScore is an <strong>offline-first</strong> application. All scores, player rosters, and match statistics are stored locally on your device. Phone-to-watch synchronization works over direct Bluetooth and local wireless communication without requiring cellular or internet access.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">7. How do I delete player rosters or reset data?</div>
+      <div class="faq-answer">
+        Navigate to the <strong>Players</strong> screen to edit or remove player profiles. You can also clear past matches from the <strong>Scores</strong> screen or uninstall the application to remove all stored data.
+      </div>
+    </div>
+
+    <h2>Troubleshooting Smartwatch Sync</h2>
+    <p>If your smartwatch does not immediately display the ongoing match:</p>
+    <ul>
+      <li>Ensure Bluetooth is enabled on both your phone and watch.</li>
+      <li>Confirm that BScore is open on your phone with a match actively started.</li>
+      <li>On the watch, tap anywhere on the screen or relaunch the app to trigger an instant state refresh.</li>
+    </ul>
+
+    <footer>
+      <span>&copy; 2026 BScore. All rights reserved.</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a></span>
+    </footer>
+  </div>
+</body>
+</html>
