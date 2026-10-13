@@ -1,32 +1,22 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const name = [userData.name.first, userData.name.middle].filter(Boolean).join(' ')
+    document.getElementById('home-page-name-main').textContent = name
+    document.getElementById('home-page-name-initials').textContent = userData.name.last
+    document.getElementById('home-page-primary-role').textContent = userData.jobTitles.slice(0, 2).join(' · ')
+    document.getElementById('home-page-introduction').textContent = userData.homeIntroduction || userData.about_me
 
-document.addEventListener('DOMContentLoaded', domContentLoaded)
-function domContentLoaded() {
-
-    homePageAboutMe.innerHTML = `${userData.jobTitles[0]}  `
-
-    homePageAboutMe.style.animationName = "home-page-about-me-width-animation"
-}
-
-let homePageAboutMe = document.getElementById('home-page-about-me');
-let indexJobTitle = 0; // Current 
-let indexHomePageAboutMeAnimationStatus = 0;
-homePageAboutMe.addEventListener('animationstart', (ev) => {
-    console.log("Animation Startted", ev);
-});
-homePageAboutMe.addEventListener('animationiteration', (ev) => {
-    console.log("animation_iteration", ev);
-    ++indexHomePageAboutMeAnimationStatus
-    if ((indexHomePageAboutMeAnimationStatus % 2) === 1) {
-        ++indexJobTitle
-        homePageAboutMe.innerHTML = `${userData.jobTitles[indexJobTitle % userData.jobTitles.length]}  ` 
-        // ++indexJobTitle
+    const secondaryRoles = userData.jobTitles.slice(2)
+    const role = document.getElementById('home-page-about-me')
+    if (!secondaryRoles.length) {
+        role.parentElement.hidden = true
+        return
     }
-});
-
-// homePageAboutMe.addEventListener('animationend', (ev) => {
-//    console.log("animation end", ev);
-// });
-
-// homePageAboutMe.addEventListener('animationcancel', (ev) => {
-//     console.log("Animation canceled" , ev); 
-// }
+    let roleIndex = 0
+    role.textContent = secondaryRoles[roleIndex]
+    role.addEventListener('animationiteration', event => {
+        if (event.animationName === 'home-role-cycle') {
+            roleIndex = (roleIndex + 1) % secondaryRoles.length
+            role.textContent = secondaryRoles[roleIndex]
+        }
+    })
+})

@@ -4,6 +4,7 @@ const userData = {
         "middle": "Kumar",
         "last": "K R"
     },
+    location: "Kerala, India",
     jobTitles: [
         "iOS Developer",
         "React Native Developer",
@@ -11,7 +12,8 @@ const userData = {
         "Web Hobbyist",
         "Freelancer"
     ],
-    about_me: `I'm an enthusiastic and passionate mobile application developer. I build apps primarily for iOS platform using Xcode and if required would also build apps using React Native cross platform framework. I also build Android and web apps, as a hobby.`,
+    about_me: `I'm a mobile application developer focused on iOS. I build apps with Xcode and React Native, and explore Android and web development as a hobby.`,
+    homeIntroduction: "I build iOS and cross-platform mobile apps with Xcode and React Native.",
     birthday: {
         "title": "Birthday",
         "value": "05-12-1992"
@@ -92,8 +94,8 @@ const userData = {
             "startYear": "1998",
             "endYear": "2010",
             "graduationYear": "2010",
-            "marksWithUnit": "67 %",
-            "subjects":"Maths , ComputerScience",
+            "marksWithUnit": "67%",
+            "subjects":"Maths, Computer Science",
             course:"AISSCE"
         },
         {
@@ -102,7 +104,7 @@ const userData = {
             "startYear": "1998",
             "endYear": "2008",
             "graduationYear": "2008",
-            "marksWithUnit": "77 %",
+            "marksWithUnit": "77%",
             "subjects":"Science Major",
             course:"AISSE"
         },

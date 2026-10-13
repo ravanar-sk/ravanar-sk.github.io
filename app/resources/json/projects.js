@@ -2,6 +2,7 @@
 const projects = [
     {
         priority: 0,
+        isPersonal: true,
         title: "My Profile",
         description: "A website created out of passion and love as a portfolio of myself.",
         website: "https://ravanar-sk.github.io/",
@@ -19,6 +20,7 @@ const projects = [
     },
     {
         priority: 1,
+        isPersonal: false,
         title: "MATCHBOXX",
         description: "A social networking iOS application where you could meet sport enthusiasts, such as Coach, Teams, Fans and interact with them over personal and group chat, post on their feeds, follow them, comment on their feeds and most importantly you could schedule matches between users or teams.",
         website: null,
@@ -36,6 +38,7 @@ const projects = [
     },
     {
         priority: 2,
+        isPersonal: false,
         title: "PLANSMILE",
         description: "An iOS offline medical application used to analyze, and provide treatment solutions in the form of PDF reports.",
         website: null,
@@ -53,6 +56,7 @@ const projects = [
     },
     {
         priority: 3,
+        isPersonal: false,
         title: "BIZCLIPS",
         description: "A professional social networking iOS application where you could publicize job openings if you are an entrepreneur, or market your skills as a job seeker using Videos as the media of communication.",
         website: null,
@@ -70,6 +74,7 @@ const projects = [
     },
     {
         priority: 4,
+        isPersonal: false,
         title: "SAP",
         description: "An iOS application used to authenticate users in a SAP technical event using QR code and REST API authentication.",
         website: null,
@@ -87,6 +92,7 @@ const projects = [
     },
     {
         priority: 5,
+        isPersonal: false,
         title: "HASANAT",
         description: "An application used for donation based crowdfunding for middle east location. It includes features like Payment Gateway.",
         website: null,
@@ -106,6 +112,7 @@ const projects = [
     },
     {
         priority: 6,
+        isPersonal: false,
         title: "EDUCATION ABOVE ALL",
         description: "An application used for donation based crowdfunding for middle east location. It includes features like Payment Gateway.",
         website: "https://educationaboveall.org/",
@@ -125,6 +132,7 @@ const projects = [
     },
     {
         priority: 7,
+        isPersonal: false,
         title: "QATAR CANCER SOCIETY",
         description: "An application used for donation based crowdfunding for middle east location. It includes features like Payment Gateway.",
         website: "https://www.qcs.qa/en/",
@@ -144,6 +152,7 @@ const projects = [
     },
     {
         priority: 8,
+        isPersonal: false,
         title: "YOU GOT A GIFT",
         description: "An iOS application to send gift cards to your friends and family to use in authorised stores.",
         website: "https://yougotagift.com/",
@@ -161,6 +170,7 @@ const projects = [
     },
     {
         priority: 9,
+        isPersonal: false,
         title: "DIETHUB",
         description: "A client application for customers who are subscribed to DietHub services. It includes a private virtual online coach to monitor your health and diet. Also includes personal chat.",
         website: "http://diethubapp.com/",
@@ -180,6 +190,7 @@ const projects = [
     },
     {
         priority: 10,
+        isPersonal: false,
         title: "DIETHUB Coach",
         description: "",
         website: "http://diethubapp.com/",
@@ -199,6 +210,7 @@ const projects = [
     },
     {
         priority: 11,
+        isPersonal: false,
         title: "DHI Cubes",
         description: "Design and Develop UI pages for websites using DHI Cubes, an interactive customizable web front end design and development tool. Languages used: Java, Javascript, C++",
         website: "https://www.dhisigma.com/",
@@ -216,6 +228,7 @@ const projects = [
     },
     {
         priority: 12,
+        isPersonal: false,
         title: "ONEPORT",
         description: "An iOS application to be used by employees and residents of OnePort settlements in Qatar for flat maintenance.",
         website: null,
@@ -235,6 +248,7 @@ const projects = [
     },
     {
         priority: 13,
+        isPersonal: false,
         title: "AL JNOUB",
         description: "A React-Native application to reserve camping ground in the southern reserve of Qatar.",
         website: "https://www.aljnoub.qa/",
@@ -254,6 +268,7 @@ const projects = [
     },
     {
         priority: 14,
+        isPersonal: false,
         title: "EMPORIUM",
         description: "An e-commerce React-Native application for GCC by emporium group.",
         website: null,

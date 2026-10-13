@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupProjectDialog()
     addingProjectData()
+    setupProjectFilters()
 })
 
 const iconApple = "./app/resources/images/icons/iconApple.png"
@@ -9,10 +10,75 @@ const iconWeb = "./app/resources/images/icons/iconWeb.png"
 const iconReactNative = "./app/resources/images/icons/iconReactNative.svg"
 
 let projectDialogCloseTimer
+const projectCards = new Map()
 
 function addingProjectData() {
-    const projectGridLayout = document.getElementById('projects-grid-layout')
-    projects.forEach(project => projectGridLayout.appendChild(createProjectElement(project)))
+    projects.forEach(project => {
+        const category = getProjectCategory(project)
+        const card = createProjectElement(project)
+        projectCards.set(project, card)
+        document.getElementById(`${category}-projects-grid`).appendChild(card)
+    })
+}
+
+function setupProjectFilters() {
+    const filters = document.getElementById('projects-filters')
+    const options = [
+        { label: 'All projects', platform: null },
+        { label: 'iOS', platform: 'iOS' },
+        { label: 'Android', platform: 'Android' },
+        { label: 'Web', platform: 'Web' },
+        { label: 'React Native', platform: 'React Native' }
+    ]
+
+    options.forEach(({ label, platform }, index) => {
+        const count = projects.filter(project => !platform ||
+            getProjectPlatforms(project).some(item => item.label === platform)).length
+        const button = document.createElement('button')
+        button.type = 'button'
+        button.className = 'projects-filter'
+        button.setAttribute('aria-label', label)
+        button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false')
+        const name = document.createElement('span')
+        name.textContent = label
+        const total = document.createElement('span')
+        total.className = 'projects-filter-count'
+        total.textContent = count
+        total.setAttribute('aria-hidden', 'true')
+        button.append(name, total)
+        button.addEventListener('click', () => {
+            filters.querySelectorAll('button').forEach(filter => {
+                filter.setAttribute('aria-pressed', filter === button ? 'true' : 'false')
+            })
+            let visibleCount = 0
+            projects.forEach(project => {
+                const visible = !platform || getProjectPlatforms(project).some(item => item.label === platform)
+                projectCards.get(project).hidden = !visible
+                if (visible) visibleCount++
+            })
+            updateProjectCount(visibleCount)
+        })
+        filters.appendChild(button)
+    })
+    updateProjectCount(projects.length)
+}
+
+function updateProjectCount(count) {
+    document.getElementById('projects-result-count').textContent = `${count} ${count === 1 ? 'project' : 'projects'} shown`
+    document.querySelectorAll('.projects-group').forEach(group => {
+        const visibleCount = group.querySelectorAll('.projects-grid-item:not([hidden])').length
+        document.getElementById(`${group.dataset.category}-projects-count`).textContent =
+            `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'}`
+        group.hidden = visibleCount === 0
+    })
+}
+
+function getProjectCategory(project) {
+    return project.isPersonal === true ? 'personal' : 'professional'
+}
+
+function getProjectInitials(project) {
+    return project.title.trim().split(/\s+/).slice(0, 2).map(word => word.charAt(0)).join('').toUpperCase()
 }
 
 function getProjectPlatforms(project) {
@@ -49,7 +115,7 @@ function setProjectImage(image, source, fallback) {
 }
 
 function createProjectElement(project) {
-    const card = document.createElement('article')
+    const card = document.createElement('li')
     card.className = 'projects-grid-item'
 
     const openButton = document.createElement('button')
@@ -64,7 +130,7 @@ function createProjectElement(project) {
     artwork.className = 'projects-grid-item-artwork'
     const initial = document.createElement('span')
     initial.className = 'projects-grid-item-initial'
-    initial.textContent = project.title.charAt(0).toUpperCase()
+    initial.textContent = getProjectInitials(project)
     initial.setAttribute('aria-hidden', 'true')
     const image = document.createElement('img')
     image.className = 'projects-grid-item-bg-image'
@@ -75,10 +141,23 @@ function createProjectElement(project) {
 
     const content = document.createElement('div')
     content.className = 'projects-grid-item-content-container'
-    const title = document.createElement('h2')
+    const platforms = getProjectPlatforms(project)
+    const category = document.createElement('span')
+    category.className = 'projects-card-type'
+    category.textContent = project.projectData?.isReactNative ? 'React Native app' :
+        platforms.some(platform => platform.label === 'Web') ? 'Web project' :
+        `${platforms.map(platform => platform.label).join(' & ')} app`
+    const title = document.createElement('h4')
     title.className = 'projects-grid-title'
     title.textContent = project.title
-    content.appendChild(title)
+    content.append(category, title)
+    if (project.description?.trim()) {
+        const description = document.createElement('span')
+        description.className = 'projects-card-description'
+        description.textContent = project.description.trim()
+        description.setAttribute('aria-hidden', 'true')
+        content.appendChild(description)
+    }
     openButton.append(artwork, content)
 
     const tags = document.createElement('div')
@@ -86,7 +165,7 @@ function createProjectElement(project) {
     const tagsRow = document.createElement('div')
     tagsRow.className = 'projects-tags-row'
 
-    getProjectPlatforms(project).forEach(platform => {
+    platforms.forEach(platform => {
         const icon = document.createElement('img')
         icon.className = 'projects-tags-item'
         icon.src = platform.icon
@@ -105,7 +184,13 @@ function createProjectElement(project) {
 
     const hint = document.createElement('span')
     hint.className = 'projects-view-details'
-    hint.textContent = 'VIEW DETAILS →'
+    hint.setAttribute('aria-hidden', 'true')
+    const hintLabel = document.createElement('span')
+    hintLabel.textContent = 'VIEW DETAILS'
+    const hintArrow = document.createElement('span')
+    hintArrow.className = 'projects-view-details-arrow'
+    hintArrow.textContent = '↗'
+    hint.append(hintLabel, hintArrow)
     content.appendChild(hint)
     tags.appendChild(tagsRow)
     card.append(openButton, tags)
@@ -155,7 +240,7 @@ function openProjectDetails(project) {
     dialog.classList.remove('is-closing')
     document.getElementById('project-details-title').textContent = project.title
     document.getElementById('project-details-description').textContent = project.description?.trim() || 'More details about this project will be added soon.'
-    document.getElementById('project-details-initial').textContent = project.title.charAt(0).toUpperCase()
+    document.getElementById('project-details-initial').textContent = getProjectInitials(project)
     setProjectImage(icon, project.icon)
     setProjectImage(banner, project.bannerImage || project.icon)
     banner.classList.toggle('is-icon-fallback', !project.bannerImage)

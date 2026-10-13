@@ -2,10 +2,27 @@
 
 Static personal portfolio and mobile app support pages, built with HTML, CSS, and JavaScript.
 
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
+
 ## Local preview
 
 From the repository root, run `python3 -m http.server 8000`, then open `http://localhost:8000`.
 No installation or build step is required.
+
+## Navigation
+
+The sidebar uses the name and public `location` label from `app/resources/json/user-data.js`.
+The current section is highlighted as the page scrolls and marked with `aria-current`.
+On mobile, the menu becomes a horizontal bar with larger touch targets; the active link
+stays in view when the menu needs to scroll. Keyboard focus is visible, and reduced-motion
+preferences disable smooth scrolling and menu transitions.
+
+## Home
+
+The Home section reads the name, `homeIntroduction`, and role labels from
+`app/resources/json/user-data.js`. The first two roles stay visible, while the remaining
+roles gently fade between labels. View projects opens the project grid; Contact me scrolls
+to the About contact buttons. Animations respect the reduced-motion preference.
 
 ## Project details
 
@@ -17,7 +34,13 @@ the viewport width and height on desktop and expands on smaller screens. Close i
 close button, Escape, or a click outside it. Platform icons are always visible at the top
 right of each card on a semi-transparent glass layer with backdrop blur; linked icons
 open their store or website pages. The title gradient fades from the bottom left. Hovering
-or focusing a card gently emphasizes its title and reveals the animated "View details" cue.
+or focusing a card enlarges its title, previews its description, and reveals the animated
+"View details" cue. Platform filters help browse iOS, Android, web, and React Native projects;
+the count updates to match the visible cards.
+Projects are grouped into Personal projects first, then Professional projects. Set each
+record's `isPersonal` flag to `true` for personal projects or `false` for professional
+projects. Missing flags default to professional. Platform filters apply to both groups
+and hide groups without matching cards.
 
 App artwork fills each card's background, with the project name at the bottom left over
 a dark gradient. App and platform icons are bundled under `app/resources/images` so they
@@ -27,6 +50,7 @@ Each record supports these fields:
 
 | Field | Used for |
 | --- | --- |
+| `isPersonal` | `true` for personal projects, `false` for professional; personal projects appear first |
 | `title` | Project name and accessible card label |
 | `description` | Full project description; line breaks are preserved |
 | `icon` | Card image and popup icon; use an image URL or a local image path |
@@ -39,6 +63,7 @@ For example:
 ```javascript
 {
     priority: 0,
+    isPersonal: true,
     title: "My Profile",
     description: "A website created out of passion and love as a portfolio of myself.",
     website: "https://ravanar-sk.github.io/",
@@ -62,3 +87,20 @@ clear empty states. Duplicate website links are shown only once.
 
 Useful future additions to the data model are `role`, `techStack`, `features`, `screenshots`,
 `year`, `status`, and `sourceUrl`. These fields are suggestions and are not rendered yet.
+
+## Education and work
+
+Education cards and their details popup use `userData.education` in
+`app/resources/json/user-data.js`. Click an item, or focus it and press Enter or Space,
+to view its academic record. Close the popup with its close button, Escape, or a click
+outside it. Work timeline cards and their details popup use `app/resources/json/work-data.js`,
+with responsibilities shown as a list and skills as tags. Click a work item, or focus it
+and press Enter or Space, to open its popup; the same close controls apply.
+Both timelines and popups adapt to smaller screens.
+
+## About me
+
+The About section uses the biography, name, role labels, email, phone, and GitHub link
+from `app/resources/json/user-data.js`, alongside the existing local portrait photos.
+Update that data file to change the introduction, role badges, or contact details.
+Email, WhatsApp, and Call actions use the email address and first phone number in that file.

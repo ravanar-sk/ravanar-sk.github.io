@@ -22,208 +22,142 @@
 <body>
 
     <!-- Side Navigation -->
-    <div class="side-navigation-menu-container">
-
+    <aside class="side-navigation-menu-container">
         <div class="side-navigation-menu">
-
-            <h1 class="side-menu-item side-menu-title">INDIA</h1>
-            <a href="#home-container">
-                <h3 id="id_sidemenu_home" class="side-menu-item side-menu-sub-title">HOME</h3>
-            </a>
-
-            <a href="#about-me-container">
-                <h3 id="id_sidemenu_about"  class="side-menu-item side-menu-sub-title">ABOUT</h3>
-            </a>
-            <a href="#projects-container">
-                <h3 id="id_sidemenu_projects"  class="side-menu-item side-menu-sub-title">Projects</h3>
-            </a>
-            <a href="#education-container">
-                <h3 id="id_sidemenu_education"  class="side-menu-item side-menu-sub-title">Education</h3>
-            </a>
-            <a href="#work-container">
-                <h3 id="id_sidemenu_work"  class="side-menu-item side-menu-sub-title">Work</h3>
-            </a>
-            <!-- <a href="#hobbies-container">
-                <h3 class="side-menu-item side-menu-sub-title">Hobbies</h3>
-            </a> -->
-            <!-- <a href="#gallery-container">
-                <h3 class="side-menu-item side-menu-sub-title">Gallery</h3>
-            </a> -->
-
+            <div class="side-menu-profile">
+                <p id="side-menu-initials" class="side-menu-initials" aria-hidden="true">SK</p>
+                <p id="side-menu-name" class="side-menu-name">Saravana Kumar K R</p>
+                <p id="side-menu-location" class="side-menu-location">Kerala, India</p>
+            </div>
+            <nav class="side-navigation-links" aria-label="Main navigation">
+                <a id="id_sidemenu_home" class="side-menu-link" href="#home-container" aria-current="location">Home</a>
+                <a id="id_sidemenu_about" class="side-menu-link" href="#about-me-container">About</a>
+                <a id="id_sidemenu_projects" class="side-menu-link" href="#projects-container">Projects</a>
+                <a id="id_sidemenu_education" class="side-menu-link" href="#education-container">Education</a>
+                <a id="id_sidemenu_work" class="side-menu-link" href="#work-container">Work</a>
+            </nav>
         </div>
-
-    </div>
+    </aside>
 
     <!-- Page container -->
 
     <div class="page-container">
 
         <!-- Profile Container -->
-        <div id="home-container" class="details-container">
-
-            <div id="profile-image-container">
-                <div id="profile-image-bg-layer"></div>
-                <dic id="home-profile-image-clip-container">
-                    <img id="profile-image" src="./app/resources/images/pictures/imgProfilePicture.jpg" />
-                </dic>
-                <!-- <div id="profile-image-front-layer"></div> -->
-            </div>
-
+        <section id="home-container" class="details-container" aria-labelledby="home-page-name">
+            <figure id="profile-image-container">
+                <img id="profile-image" src="./app/resources/images/pictures/imgProfilePicture.jpg" alt="Saravana riding a bicycle" fetchpriority="high">
+            </figure>
             <div id="home-page-about-mename-container">
-                <h3 id="home-page-name">SARAVANA KUMAR K R</h3>
-                <div style="display: flex;">
-                    <p id="home-page-about-me">iOS Developer | React Native Developer | Android Hobbyist | Freelancer
-                    </p>
-                    <div id="home-page-about-me-vertical-line"></div>
+                <p class="home-eyebrow">MOBILE APPLICATION DEVELOPER</p>
+                <h1 id="home-page-name"><span id="home-page-name-main">Saravana Kumar</span> <span id="home-page-name-initials">K R</span></h1>
+                <p id="home-page-primary-role">iOS Developer · React Native Developer</p>
+                <p id="home-page-introduction"></p>
+                <p class="home-secondary-roles"><span class="home-secondary-label">ALSO</span> <span id="home-page-about-me">Android Hobbyist</span></p>
+                <div class="home-actions">
+                    <a class="home-action home-action-primary" href="#projects-container">View projects <span aria-hidden="true">↗</span></a>
+                    <a class="home-action" href="#about-me-contact"><span class="home-action-label"><img src="./app/resources/images/icons/iconMail.png" alt="" aria-hidden="true">Contact me</span><span aria-hidden="true">↗</span></a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- About -->
-        <div id="about-me-container">
-
-            <div id="about-me-image-list-container">
-                <div class="about-me-image-container">
-                    <img class="about-me-image-list-item"
-                        src="./app/resources/images/pictures/imgSubProfilePicture_02.jpg" />
-                    <div class="about-me-image-overlay-container">
-                        <!-- <h2 class="about-me-image-overlay-text">Who I was!</h2> -->
-                    </div>
+        <section id="about-me-container" aria-labelledby="about-me-title">
+            <header class="about-section-header">
+                <p class="about-eyebrow">BEHIND THE WORK</p>
+                <h2 id="about-me-title">About me</h2>
+            </header>
+            <div class="about-layout">
+                <div class="about-photo-grid">
+                    <figure class="about-portrait">
+                        <img class="about-photo" src="./app/resources/images/pictures/imgSubProfilePicture_03.jpg" alt="Portrait of Saravana Kumar K R" loading="lazy">
+                    </figure>
+                    <figure class="about-thumbnail">
+                        <img class="about-photo" src="./app/resources/images/pictures/imgSubProfilePicture_02.jpg" alt="Saravana wearing glasses" loading="lazy">
+                    </figure>
+                    <figure class="about-thumbnail">
+                        <img class="about-photo" src="./app/resources/images/pictures/imgSubProfilePicture_01.jpg" alt="Stylized portrait of Saravana" loading="lazy">
+                    </figure>
                 </div>
-                <div class="about-me-image-container" style="margin-left: 10px; margin-right: 10px;">
-                    <img class="about-me-image-list-item"
-                        src="./app/resources/images/pictures/imgSubProfilePicture_01.jpg" />
-                    <div class="about-me-image-overlay-container">
-                        <!-- <h2 class="about-me-image-overlay-text">In a confused state?</h2> -->
+                <div class="about-content">
+                    <div class="about-introduction">
+                        <h3 id="about-me-name"></h3>
+                        <p id="about-me-primary-role"></p>
+                        <p id="about-me-description"></p>
                     </div>
-                </div>
-                <div class="about-me-image-container">
-                    <img class="about-me-image-list-item"
-                        src="./app/resources/images/pictures/imgSubProfilePicture_03.jpg" />
-                    <div class="about-me-image-overlay-container">
-                        <!-- <h2 class="about-me-image-overlay-text">What I am now.</h2> -->
+                    <section class="about-roles-section" aria-labelledby="about-roles-title">
+                        <h3 id="about-roles-title" class="about-section-label">WHAT I DO</h3>
+                        <ul id="about-me-roles" class="about-roles" role="list"></ul>
+                    </section>
+                    <div id="about-me-contact" class="about-actions">
+                        <a class="about-action about-action-primary" href="#projects-container">Explore projects <span aria-hidden="true">↗</span></a>
+                        <a id="about-me-github" class="about-action" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile (opens in a new tab)" hidden>
+                            <span class="about-action-label"><img class="about-action-icon" src="./app/resources/images/icons/iconGithub.svg" alt="" aria-hidden="true">GitHub</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                        <a id="about-me-email" class="about-action" aria-label="Email me" hidden>
+                            <span class="about-action-label"><img class="about-action-icon" src="./app/resources/images/icons/iconMail.png" alt="" aria-hidden="true">Email</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                        <a id="about-me-whatsapp" class="about-action" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp me (opens in a new tab)" hidden>
+                            <span class="about-action-label"><img class="about-action-icon" src="./app/resources/images/icons/iconWhatsApp.svg" alt="" aria-hidden="true">WhatsApp me</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                        <a id="about-me-call" class="about-action" aria-label="Call me" hidden>
+                            <span class="about-action-label"><img class="about-action-icon" src="./app/resources/images/icons/iconTelephone.png" alt="" aria-hidden="true">Call me</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <dic style="display: flex; flex-direction: column;  width: 90%;">
-
-                <div style="display: flex; flex-direction: column; flex: 1;">
-                    <!-- <h1 id="about-me-name" style="color: white;">SARAVANA KUMAR K R</h1> -->
-                    <h3 id="about-me-description" style="color: white; opacity: 0.75;">
-                        Dummy
-                    </h3>
-                </div>
-
-                <div style="display: flex; flex-direction: column; flex: 1; ">
-                    <table>
-                        <tbody id="about-me-personal-details-table-body">
-                            <!-- All required data would be added dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </dic>
-        </div>
+        </section>
 
         <!-- Projects -->
-        <div id="projects-container">
-
-            <div id="projects-grid-layout">
-
-
-                <!-- <div class="projects-grid-item">
-                    <img class="projects-grid-item-bg-image"
-                        src="https://static.scientificamerican.com/sciam/cache/file/32472ED8-8A08-49F5-9A2AB70DA387E5B7_source.jpg?w=590&h=800&BC7D68E0-B303-4BF3-95BFF7B0071DC23D">
-                    <div class="projects-grid-item-content-container">
-                        <h1 style="color: white; margin-bottom: 10px; margin-left: 10px;">TEST</h1>
-                    </div>
-
-                    <div style="display: flex;
-                    position: absolute;
-                    width: 100%; 
-                    height: 100%;
-                    flex-direction: column;
-                    background: linear-gradient(black, transparent);
-                    align-items: center;
-                    justify-content: center;
-                    ">
-
-                    <div style="height: 70px; display: flex; align-items: center;">
-                        <a href="https://www.facebook.com/">
-                        <img src="https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/iconApple.png" style="width: 50px; height: 50px; object-fit: contain; margin-left: 5px; margin-right: 5px;"/>
-                    </a>
-                    <a href="https://www.facebook.com/">
-                        <img src="https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/iconAndroid.png" style="width: 50px; height: 50px; object-fit: contain; margin-left: 5px; margin-right: 5px;"/>
-                    </a>
-                        <a href="https://www.facebook.com/">
-                        <img src="https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/181cc1027485d870fbbef196955c1af9d37ca09b/iconReactNative.svg" style="width: 50px; height: 50px; object-fit: contain; margin-left: 5px; margin-right: 5px;"/>
-                    </a>
-                        <a href="https://www.facebook.com/">
-                        <img src="https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/iconWeb.png" style="width: 50px; height: 50px; object-fit: contain; margin-left: 5px; margin-right: 5px;"/>
-                    </a>
-                    </div>
-
-                    </div>
-                </div> -->
-
-
+        <section id="projects-container" aria-labelledby="projects-title">
+            <header class="projects-section-header">
+                <div>
+                    <p class="projects-eyebrow">SELECTED WORK</p>
+                    <h2 id="projects-title">Projects</h2>
+                    <p class="projects-section-subtitle">Mobile apps and web experiences.</p>
+                </div>
+                <p id="projects-result-count" class="projects-result-count" role="status"></p>
+            </header>
+            <div id="projects-filters" class="projects-filters" role="group" aria-label="Filter projects by platform"></div>
+            <div class="projects-groups">
+                <section class="projects-group" data-category="personal" aria-labelledby="personal-projects-title">
+                    <header class="projects-group-header">
+                        <h3 id="personal-projects-title">Personal projects</h3>
+                        <p id="personal-projects-count" class="projects-group-count"></p>
+                    </header>
+                    <ul id="personal-projects-grid" class="projects-grid-layout" role="list"></ul>
+                </section>
+                <section class="projects-group" data-category="professional" aria-labelledby="professional-projects-title">
+                    <header class="projects-group-header">
+                        <h3 id="professional-projects-title">Professional projects</h3>
+                        <p id="professional-projects-count" class="projects-group-count"></p>
+                    </header>
+                    <ul id="professional-projects-grid" class="projects-grid-layout" role="list"></ul>
+                </section>
             </div>
-        </div>
+        </section>
 
         <!-- education -->
-        <div id="education-container" >
-
-            <!-- <div style="display: flex; flex-direction: row; position: relative; background-color: blue;">
-
-                <h2 style="width: 100px;color: white;  text-align: end; margin: 0; background-color: chocolate;">2014</h2>
-                <div style="width: 1px; margin-left: 10px; margin-right: 10px; background: radial-gradient(white, transparent);"></div>
-                <div style="flex: 1;flex-direction: column;">
-                    <h2 style="color: white; flex: 1;margin: 0; align-self: center;">UKF College of Engineering (Kerala University)</h2>
-                    <h3 style="color: white; flex: 1; margin: 0; margin-top: 10px; opacity: 0.7;">B.Tech - Computer Science</h3>
-                    <h4 style="color: white; flex: 1; margin: 0; margin-top: 10px; opacity: 0.5;">6.5 CGPA</h4>
-                </div>
-            </div>
-
-            <div style="display: flex; flex-direction: row; position: relative; margin-top: 10px; margin-bottom: 10px; ">
-                <div style="width: 100px;"></div>
-                <div style="flex: 1; height: 1px; background: linear-gradient(to right, white, transparent);"></div>
-            </div> -->
-
-
-        </div>
+        <section id="education-container" aria-labelledby="education-title">
+            <header class="education-section-header">
+                <p class="education-eyebrow">ACADEMIC BACKGROUND</p>
+                <h2 id="education-title">Education</h2>
+            </header>
+            <ol id="education-list" class="education-list" role="list"></ol>
+        </section>
 
         <!-- work -->
-        <div id="work-container" >
-
-
-            <!-- <div style="display: flex; flex-direction: row; ">
-                <div style=" width: 150px; display: flex; flex-direction: column;   position: relative;">
-                    <h2 style="color: white;  margin: 0;  text-align: end;">2014</h2>
-                    <h2 style="color: white;  margin: 0;  text-align: end;">-</h2>
-                    <h2 style="color: white;  margin: 0;  text-align: end;">2018</h2>
-                </div>
-                <div style="width: 1px; margin-left: 10px; margin-right: 10px; background: radial-gradient(white, transparent);"></div>
-                <div style="display: flex; flex: 1;flex-direction: column; ">
-                    <div style="color: white;  align-self: flex-start;  overflow: hidden; font-size: x-large;">UKF
-                        College of Engineering (Kerala University) asdkjahdkjahkjdhaskjd
-                        hajskhdkjhakjhfjkadhfjkhsdjfhksdfjhkh iuufhgiu f gjh gkhd gh sdfkjsdh fkjhs dkfjhsdfh </div>
-                    <h3 style="color: white;  margin: 0; margin-top: 10px; opacity: 0.7;">B.Tech - Computer Science</h3>
-                    <h4 style="color: white;  margin: 0; margin-top: 10px; opacity: 0.5;">6.5 CGPA</h4>
-
-                    <div style="color: white; margin-top: 10px;; align-self: flex-start;  overflow: hidden; font-size: small;opacity: 0.25;">UKF
-                        College of Engineering (Kerala University) asdkjahdkjahkjdhaskjd
-                        hajskhdkjhakjhfjkadhfjkhsdjfhksdfjhkh iuufhgiu f gjh gkhd gh sdfkjsdh fkjhs dkfjhsdfh </div>
-                </div>
-            </div>
-
-            <div
-                style="display: flex; flex-direction: row; position: relative; margin-top: 10px; margin-bottom: 10px; ">
-                <div style="width: 100px;"></div>
-                <div style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, white);"></div>
-            </div> -->
-
-
-        </div>
+        <section id="work-container" aria-labelledby="work-title">
+            <header class="work-section-header">
+                <p class="work-eyebrow">PROFESSIONAL BACKGROUND</p>
+                <h2 id="work-title">Work experience</h2>
+            </header>
+            <ol id="work-list" class="work-list" role="list"></ol>
+        </section>
 
         <!-- Hobbies -->
         <!-- <div id="hobbies-container" class="details-container" style="background-color: tomato;"></div> -->
@@ -262,6 +196,53 @@
                         <p id="project-details-no-links" class="project-dialog-note" hidden>A public project link isn't available yet.</p>
                     </section>
                 </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="education-details-dialog" class="project-dialog education-dialog" aria-labelledby="education-details-title">
+        <button id="education-details-close" class="project-dialog-close" type="button" aria-label="Close education details" autofocus>&times;</button>
+        <div class="education-dialog-scroll">
+            <header class="education-dialog-hero">
+                <p class="education-eyebrow">EDUCATION DETAILS</p>
+                <span id="education-details-course" class="education-item-course"></span>
+                <span id="education-details-year" class="education-dialog-year" aria-hidden="true"></span>
+                <h2 id="education-details-title"></h2>
+                <p id="education-details-institution"></p>
+            </header>
+            <section class="education-dialog-body" aria-labelledby="education-details-record-title">
+                <h3 id="education-details-record-title" class="education-dialog-section-title">ACADEMIC RECORD</h3>
+                <dl id="education-details-record" class="education-dialog-record"></dl>
+            </section>
+        </div>
+    </dialog>
+
+    <dialog id="work-details-dialog" class="project-dialog work-dialog" aria-labelledby="work-details-title">
+        <button id="work-details-close" class="project-dialog-close" type="button" aria-label="Close work details" autofocus>&times;</button>
+        <div class="work-dialog-scroll">
+            <header class="work-dialog-hero">
+                <p class="work-eyebrow">WORK DETAILS</p>
+                <div class="work-dialog-heading">
+                    <span id="work-details-initial" class="work-item-initial" aria-hidden="true"></span>
+                    <div class="work-dialog-heading-content">
+                        <h2 id="work-details-title"></h2>
+                        <p id="work-details-position"></p>
+                        <div class="work-dialog-metadata">
+                            <span id="work-details-period"></span>
+                            <span id="work-details-status" class="work-item-status" hidden>Current</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="work-dialog-body">
+                <section aria-labelledby="work-details-responsibilities-title">
+                    <h3 id="work-details-responsibilities-title" class="work-dialog-section-title">RESPONSIBILITIES</h3>
+                    <ul id="work-details-responsibilities" class="work-item-responsibilities"></ul>
+                </section>
+                <section aria-labelledby="work-details-skills-title">
+                    <h3 id="work-details-skills-title" class="work-dialog-section-title">SKILLS &amp; TECHNOLOGIES</h3>
+                    <ul id="work-details-skills" class="work-item-skills" role="list"></ul>
+                </section>
             </div>
         </div>
     </dialog>

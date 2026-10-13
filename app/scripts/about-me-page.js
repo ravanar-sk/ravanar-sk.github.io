@@ -1,110 +1,37 @@
-document.addEventListener('DOMContentLoaded', domContentLoaded)
-function domContentLoaded() {
+document.addEventListener('DOMContentLoaded', () => {
+    const name = `${userData.name.first} ${userData.name.middle} ${userData.name.last}`
+    document.getElementById('about-me-name').textContent = name
+    document.getElementById('about-me-primary-role').textContent = userData.jobTitles[0]
+    document.querySelector('.about-portrait .about-photo').alt = `Portrait of ${name}`
+    document.getElementById('about-me-description').textContent = userData.about_me
 
-    // setting name
-    // document.getElementById('about-me-name').innerText = `${userData.name.first} ${userData.name.middle} ${userData.name.last}`
+    const roles = document.getElementById('about-me-roles')
+    userData.jobTitles.forEach(title => {
+        const role = document.createElement('li')
+        role.textContent = title
+        roles.appendChild(role)
+    })
 
-    // Setting description
-    document.getElementById('about-me-description').innerText = userData.about_me
+    if (userData.email.value) {
+        const emailLink = document.getElementById('about-me-email')
+        emailLink.href = `mailto:${userData.email.value}`
+        emailLink.hidden = false
+    }
 
-    //  Adding Personal Details
-    addingPersonalData()
-}
+    const phoneNumber = userData.phone[0]?.value[0]?.replace(/[^\d+]/g, '')
+    if (phoneNumber) {
+        const whatsappLink = document.getElementById('about-me-whatsapp')
+        whatsappLink.href = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`
+        whatsappLink.hidden = false
+        const callLink = document.getElementById('about-me-call')
+        callLink.href = `tel:${phoneNumber}`
+        callLink.hidden = false
+    }
 
-function addingPersonalData() {
-
-    const personalDetailsTableBody = document.getElementById('about-me-personal-details-table-body')
-
-    // Adding birthDay
-    const rowBirthday = createElementWith(userData.birthday.title,userData.birthday.value)
-    personalDetailsTableBody.appendChild(rowBirthday)
-
-    // Adding Address
-    // const rowAddress = createElementWith(userData.address.title,userData.address.value)
-    // personalDetailsTableBody.appendChild(rowAddress)
-
-    // Email
-    const rowEmail = createElementWith(userData.email.title,userData.email.value)
-    personalDetailsTableBody.appendChild(rowEmail)
-
-    // Website
-    // const rowWebsite = createElementWith(userData.website.title,userData.website.value)
-    // personalDetailsTableBody.appendChild(rowWebsite)
-
-    // let rowWebsite = createWebsiteRow()
-    // personalDetailsTableBody.appendChild(rowWebsite)    
-}
-
-
-function createElementWith(key, value) {
-    const tableRow = document.createElement('tr')
-    tableRow.className = "about-me-table-row"
-
-    const tableDataTitle = document.createElement('td')
-    tableDataTitle.className = "about-me-table-data-title"
-    
-    const tableDataValue = document.createElement('td')
-    tableDataValue.className = "about-me-table-data-value"
-
-    const tableDataSeparator = document.createElement('td')
-    tableDataSeparator.className =  "about-me-table-data-separator"
-
-    const h3_Title= document.createElement('h3')
-    h3_Title.className = "about-me-user-details-title"
-    h3_Title.innerText = key
-
-    const h3_separator = document.createElement('h3')
-    h3_separator.className = "about-me-user-details-separator"
-    h3_separator.innerText = ":"
-
-    const h3_Value = document.createElement('h3')
-    h3_Value.className = "about-me-user-details-value"
-    h3_Value.innerText = value
-
-    tableDataTitle.appendChild(h3_Title)
-    tableDataSeparator.appendChild(h3_separator)
-    tableDataValue.appendChild(h3_Value)
-
-    tableRow.appendChild(tableDataTitle)
-    tableRow.appendChild(tableDataSeparator)
-    tableRow.appendChild(tableDataValue)
-    return tableRow
-}
-
-function createWebsiteRow() {
-    const tableRow = document.createElement('tr')
-    tableRow.className = "about-me-table-row"
-
-    const tableDataTitle = document.createElement('td')
-    tableDataTitle.className = "about-me-table-data-title"
-    
-    const tableDataValue = document.createElement('td')
-    tableDataValue.className = "about-me-table-data-value"
-
-    const tableDataSeparator = document.createElement('td')
-    tableDataSeparator.className =  "about-me-table-data-separator"
-
-    const h3_Title= document.createElement('h3')
-    h3_Title.className = "about-me-user-details-title"
-    h3_Title.innerText = userData.website.title
-
-    const h3_separator = document.createElement('h3')
-    h3_separator.className = "about-me-user-details-separator"
-    h3_separator.innerText = ":"
-
-    const h3_Value = document.createElement('h3')
-    h3_Value.className = "about-me-user-details-value"
-    h3_Value.innerText = userData.website.value
-
-    tableDataTitle.appendChild(h3_Title)
-    tableDataSeparator.appendChild(h3_separator)
-    tableDataValue.appendChild(h3_Value)
-
-    tableRow.appendChild(tableDataTitle)
-    tableRow.appendChild(tableDataSeparator)
-    tableRow.appendChild(tableDataValue)
-
-    return tableRow
-
-    
-}
+    const github = userData.codeAndTechnicalForums.find(item => item.title.toLowerCase() === 'github')
+    if (github) {
+        const link = document.getElementById('about-me-github')
+        link.href = github.link
+        link.hidden = false
+    }
+})
