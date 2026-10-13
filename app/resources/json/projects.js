@@ -6,6 +6,7 @@ const projects = [
         description: "A website created out of passion and love as a portfolio of myself.",
         website: "https://ravanar-sk.github.io/",
         icon: null,
+        bannerImage: null,
         projectData: {
             type: "web", // mobile/web
             isReactNative: false,
@@ -21,7 +22,8 @@ const projects = [
         title: "MATCHBOXX",
         description: "A social networking iOS application where you could meet sport enthusiasts, such as Coach, Teams, Fans and interact with them over personal and group chat, post on their feeds, follow them, comment on their feeds and most importantly you could schedule matches between users or teams.",
         website: null,
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconMatchboxx.jpeg",
+        icon: "./app/resources/images/projects/appIconMatchboxx.jpeg",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -38,6 +40,7 @@ const projects = [
         description: "An iOS offline medical application used to analyze, and provide treatment solutions in the form of PDF reports.",
         website: null,
         icon: null,
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -53,7 +56,8 @@ const projects = [
         title: "BIZCLIPS",
         description: "A professional social networking iOS application where you could publicize job openings if you are an entrepreneur, or market your skills as a job seeker using Videos as the media of communication.",
         website: null,
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconBizclips.jpeg",
+        icon: "./app/resources/images/projects/appIconBizclips.jpeg",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -69,7 +73,8 @@ const projects = [
         title: "SAP",
         description: "An iOS application used to authenticate users in a SAP technical event using QR code and REST API authentication.",
         website: null,
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconSAP.png",
+        icon: "./app/resources/images/projects/appIconSAP.png",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -85,7 +90,8 @@ const projects = [
         title: "HASANAT",
         description: "An application used for donation based crowdfunding for middle east location. It includes features like Payment Gateway.",
         website: null,
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconHasanat.jpeg",
+        icon: "./app/resources/images/projects/appIconHasanat.jpeg",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -103,7 +109,8 @@ const projects = [
         title: "EDUCATION ABOVE ALL",
         description: "An application used for donation based crowdfunding for middle east location. It includes features like Payment Gateway.",
         website: "https://educationaboveall.org/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconEAA.jpeg",
+        icon: "./app/resources/images/projects/appIconEAA.jpeg",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -121,7 +128,8 @@ const projects = [
         title: "QATAR CANCER SOCIETY",
         description: "An application used for donation based crowdfunding for middle east location. It includes features like Payment Gateway.",
         website: "https://www.qcs.qa/en/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconQCS.jpeg",
+        icon: "./app/resources/images/projects/appIconQCS.jpeg",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -139,7 +147,8 @@ const projects = [
         title: "YOU GOT A GIFT",
         description: "An iOS application to send gift cards to your friends and family to use in authorised stores.",
         website: "https://yougotagift.com/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconYouGotAGift.webp",
+        icon: "./app/resources/images/projects/appIconYouGotAGift.webp",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -155,7 +164,8 @@ const projects = [
         title: "DIETHUB",
         description: "A client application for customers who are subscribed to DietHub services. It includes a private virtual online coach to monitor your health and diet. Also includes personal chat.",
         website: "http://diethubapp.com/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconDiethub.webp",
+        icon: "./app/resources/images/projects/appIconDiethub.webp",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -173,7 +183,8 @@ const projects = [
         title: "DIETHUB Coach",
         description: "",
         website: "http://diethubapp.com/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconDiethubCoach.webp",
+        icon: "./app/resources/images/projects/appIconDiethubCoach.webp",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -191,7 +202,8 @@ const projects = [
         title: "DHI Cubes",
         description: "Design and Develop UI pages for websites using DHI Cubes, an interactive customizable web front end design and development tool. Languages used: Java, Javascript, C++",
         website: "https://www.dhisigma.com/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconDhiCubes.png",
+        icon: "./app/resources/images/projects/appIconDhiCubes.png",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -207,7 +219,8 @@ const projects = [
         title: "ONEPORT",
         description: "An iOS application to be used by employees and residents of OnePort settlements in Qatar for flat maintenance.",
         website: null,
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconOneport.webp",
+        icon: "./app/resources/images/projects/appIconOneport.webp",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: false,
@@ -225,7 +238,8 @@ const projects = [
         title: "AL JNOUB",
         description: "A React-Native application to reserve camping ground in the southern reserve of Qatar.",
         website: "https://www.aljnoub.qa/",
-        icon: "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/ProjectsAppIcons/appIconAlJnoub.webp",
+        icon: "./app/resources/images/projects/appIconAlJnoub.webp",
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: true,
@@ -244,6 +258,7 @@ const projects = [
         description: "An e-commerce React-Native application for GCC by emporium group.",
         website: null,
         icon: null,
+        bannerImage: null,
         projectData: {
             type: "mobile", // mobile/web
             isReactNative: true,

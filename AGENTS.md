@@ -1,0 +1,1 @@
+Follow the existing project structure.

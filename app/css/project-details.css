@@ -1,0 +1,301 @@
+body.project-dialog-open {
+    overflow: hidden;
+}
+
+.project-dialog {
+    box-sizing: border-box;
+    width: 80vw;
+    height: 80vh;
+    height: 80dvh;
+    max-width: none;
+    max-height: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #343434;
+    border-radius: 8px;
+    background: #0e0e0e;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    box-shadow: 0 30px 100px #00000099;
+}
+
+.project-dialog[open] {
+    animation: project-dialog-in 280ms ease-out both;
+}
+
+.project-dialog::backdrop {
+    background: #000000b8;
+    backdrop-filter: blur(6px);
+    animation: project-backdrop-in 280ms ease-out both;
+}
+
+.project-dialog.is-closing {
+    animation: project-dialog-out 220ms ease-in both;
+}
+
+.project-dialog.is-closing::backdrop {
+    animation: project-backdrop-out 220ms ease-in both;
+}
+
+.project-dialog-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #ffffff40;
+    border-radius: 50%;
+    background: #0e0e0ed9;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.project-dialog-close:hover {
+    background: #333;
+    transform: rotate(90deg);
+}
+
+.project-dialog-close:focus-visible,
+.project-dialog-link:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+.project-dialog-scroll {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.project-dialog-banner {
+    position: relative;
+    height: clamp(180px, 28vh, 280px);
+    overflow: hidden;
+    background: radial-gradient(ellipse at 75% 20%, #484848, transparent 65%),
+        linear-gradient(135deg, #252525, #151515);
+}
+
+.project-dialog-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-dialog-banner-image.is-icon-fallback {
+    filter: blur(12px);
+    transform: scale(1.1);
+    opacity: 0.6;
+}
+
+.project-dialog-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #00000010 20%, #0e0e0eb3 75%, #0e0e0e);
+}
+
+.project-dialog-eyebrow {
+    position: absolute;
+    top: 32px;
+    left: clamp(24px, 4vw, 56px);
+    color: #ffffffb3;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.project-dialog-content {
+    position: relative;
+    padding: 0 clamp(24px, 4vw, 56px) 44px;
+}
+
+.project-dialog-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 28px;
+    margin-top: -44px;
+}
+
+.project-dialog-icon-container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: 0 0 112px;
+    height: 112px;
+    overflow: hidden;
+    border: 1px solid #ffffff26;
+    border-radius: 20px;
+    background: #242424;
+    box-shadow: 0 12px 32px #00000059;
+}
+
+.project-dialog-icon {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-dialog-initial {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 44px;
+}
+
+.project-dialog-heading {
+    min-width: 0;
+    padding-top: 56px;
+}
+
+#project-details-title {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(24px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.project-dialog-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.project-dialog-platform {
+    padding: 6px 12px;
+    border: 1px solid #ffffff26;
+    border-radius: 4px;
+    color: #bbb;
+    font-size: 12px;
+}
+
+.project-dialog-body {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(200px, 1fr);
+    gap: 48px;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid #ffffff1a;
+}
+
+.project-dialog-section-title {
+    margin: 0 0 18px;
+    color: #888;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+#project-details-description,
+.project-dialog-note {
+    margin: 0;
+    color: #bbb;
+    font-size: 16px;
+    line-height: 1.85;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.project-dialog-note {
+    font-size: 14px;
+}
+
+.project-dialog-links {
+    display: grid;
+    gap: 10px;
+}
+
+.project-dialog-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    border: 1px solid #ffffff26;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+.project-dialog-link:hover {
+    border-color: #ffffff80;
+    background: #ffffff0d;
+}
+
+@keyframes project-dialog-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes project-dialog-out {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 0; transform: translateY(12px) scale(0.98); }
+}
+
+@keyframes project-backdrop-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes project-backdrop-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media (max-width: 700px) {
+    .project-dialog {
+        width: 92vw;
+        height: 86vh;
+        height: 86dvh;
+    }
+
+    .project-dialog-close {
+        top: 12px;
+        right: 12px;
+    }
+
+    .project-dialog-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .project-dialog-icon-container {
+        flex-basis: auto;
+        width: 88px;
+        height: 88px;
+    }
+
+    .project-dialog-heading {
+        padding-top: 0;
+    }
+
+    .project-dialog-body {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        margin-top: 28px;
+        padding-top: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-dialog[open],
+    .project-dialog::backdrop,
+    .project-dialog.is-closing,
+    .project-dialog.is-closing::backdrop {
+        animation: none;
+    }
+
+    .project-dialog-close,
+    .project-dialog-link {
+        transition: none;
+    }
+}

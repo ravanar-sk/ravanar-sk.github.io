@@ -19,120 +19,183 @@
      position:  relative;
 }
 
+.projects-grid-open-button {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    background: #171717;
+    color: white;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.projects-grid-open-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: -4px;
+}
+
+.projects-grid-item-artwork {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c2c2c, #171717);
+}
+
 .projects-grid-item-bg-image {
-    object-fit: cover; 
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
     width: 100%; 
     height: 100%;
+}
+
+.projects-grid-item-initial {
+    display: grid;
+    place-items: center;
+    width: min(96px, 100%);
+    height: min(96px, 100%);
+    aspect-ratio: 1;
+    border: 1px solid #ffffff26;
+    border-radius: 16px;
+    background: #303030;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 44px;
+}
+
+.projects-grid-item-initial[hidden] {
+    display: none;
 }
 
 .projects-grid-item-content-container {
     display: flex;
     position: absolute;
+    inset: 0;
+    z-index: 1;
+    box-sizing: border-box;
     flex-direction: column;
     width: 100%; 
     height: 100%;
-    background: linear-gradient(0deg, black, transparent);
+    padding: 14px;
+    background: radial-gradient(ellipse at bottom left, #000000eb 0%, #00000099 35%, #00000033 60%, transparent 80%);
     align-items: flex-start;
     justify-content: flex-end;
 }
 
 .projects-grid-title {
     color: white; 
-    margin-bottom: 10px; 
-    margin-left: 10px;
+    margin: 0;
+    font-size: clamp(18px, 2vw, 32px);
+    overflow-wrap: anywhere;
+    text-shadow: 0 2px 12px #000000b3;
+    transition: font-size 260ms ease, text-shadow 260ms ease;
+}
+
+.projects-grid-item:hover .projects-grid-title,
+.projects-grid-item:focus-within .projects-grid-title {
+    font-size: clamp(20px, 2.2vw, 35px);
+    text-shadow: 0 2px 16px #000000e6;
 }
 
 .projects-tags-container {
     display: flex;
     position: absolute;
-    width: 100%; 
-    height: 100%;
-    flex-direction: column;
-    background: linear-gradient(black, transparent);
-    align-items: center;
-    justify-content: center;
-    opacity: 0.0;
-    animation-duration: 300ms;
-    animation-name: animation-project-grid-item;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    max-width: calc(100% - 16px);
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: 4px;
+    justify-content: flex-end;
 }
 
-@keyframes animation-project-grid-item {
-    from {
-        opacity: 1.0;
-    }
-    to {
-        opacity: 0.0;
-    }
-}
-
-.projects-tags-container:hover {
-    display: flex;
+.projects-tags-container::before {
+    content: "";
     position: absolute;
-    width: 100%; 
-    height: 100%;
-    flex-direction: column;
-    background: linear-gradient(black, transparent);
-    align-items: center;
-    justify-content: center;
-    opacity: 1.0;
-    animation-duration: 300ms;
-    animation-name: animation-project-grid-item-active;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(225deg, #ffffff26 0%, #ffffff1a 55%, #ffffff0f 100%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 3px, #000 calc(100% - 3px), transparent), linear-gradient(to bottom, transparent, #000 3px, #000 calc(100% - 3px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 3px, #000 calc(100% - 3px), transparent), linear-gradient(to bottom, transparent, #000 3px, #000 calc(100% - 3px), transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
 }
 
-@keyframes animation-project-grid-item-active {
-    from {
-        opacity: 0.0;
-    }
-    to {
-        opacity: 1.0;
-    }    
+.projects-tags-row a {
+    pointer-events: auto;
 }
 
+.projects-tags-row a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+.projects-view-details {
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    color: #ddd;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 8px #000;
+    transition: opacity 220ms ease, transform 260ms ease, max-height 260ms ease, margin-top 260ms ease;
+}
+
+.projects-grid-item:hover .projects-view-details,
+.projects-grid-item:focus-within .projects-view-details {
+    max-height: 20px;
+    margin-top: 10px;
+    opacity: 1;
+    transform: translateY(0);
+}
 
 .projects-tags-row {
-    height: 70px;
-    display: flex; 
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     align-items: center;
+    gap: 4px;
+}
+
+.projects-platform-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    height: 44px;
+    border-radius: 4px;
 }
 
 .projects-tags-item {
-    width: 50px;
-    height: 50px; 
+    width: 28px;
+    height: 28px;
     object-fit: contain;
-    margin-left: 5px;
-    margin-right: 5px;
-    animation-duration: 300ms;
-    animation-name: animation-project-grid-item-tag;
+    filter: drop-shadow(0 1px 3px #000000b3);
 }
 
-@keyframes animation-project-grid-item-tag {
-    from {
-        width: 65px;
-    height: 65px; 
+@media (max-width: 700px) {
+    #projects-grid-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    to {
-        width: 50px;
-    height: 50px; 
-    }    
 }
 
-.projects-tags-item:hover {
-    width: 65px;
-    height: 65px; 
-    object-fit: contain;
-    margin-left: 5px;
-    margin-right: 5px;
-    animation-duration: 300ms;
-    animation-name: animation-project-grid-item-tag-active;
-}
-
-@keyframes animation-project-grid-item-tag-active {
-    from {
-        width: 50px;
-    height: 50px; 
+@media (prefers-reduced-motion: reduce) {
+    .projects-grid-item * {
+        animation: none;
+        transition: none;
     }
-    to {
-        width: 65px;
-    height: 65px; 
-    }    
 }

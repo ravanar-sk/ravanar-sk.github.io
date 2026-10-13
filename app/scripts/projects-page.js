@@ -1,121 +1,207 @@
-document.addEventListener('DOMContentLoaded', domContentLoaded)
-function domContentLoaded() {
-
-    //  Adding project data
-
+document.addEventListener('DOMContentLoaded', () => {
+    setupProjectDialog()
     addingProjectData()
-}
+})
+
+const iconApple = "./app/resources/images/icons/iconApple.png"
+const iconAndroid = "./app/resources/images/icons/iconAndroid.png"
+const iconWeb = "./app/resources/images/icons/iconWeb.png"
+const iconReactNative = "./app/resources/images/icons/iconReactNative.svg"
+
+let projectDialogCloseTimer
 
 function addingProjectData() {
     const projectGridLayout = document.getElementById('projects-grid-layout')
-    const arrayProjectElements = projects.map(projectData => {
-        return createProjectElement(projectData)
-    })
-    
-    for (let index = 0; index < arrayProjectElements.length; index++) {
-        let node = arrayProjectElements[index] 
-        projectGridLayout.appendChild(node)
+    projects.forEach(project => projectGridLayout.appendChild(createProjectElement(project)))
+}
+
+function getProjectPlatforms(project) {
+    const data = project.projectData || {}
+    const platforms = []
+    if (data.isReactNative) platforms.push({ label: 'React Native', icon: iconReactNative })
+    if (data.ios) platforms.push({ label: 'iOS', linkLabel: 'App Store', icon: iconApple, url: data.ios.url })
+    if (data.android) platforms.push({ label: 'Android', linkLabel: 'Google Play', icon: iconAndroid, url: data.android.url })
+    if (data.type === 'web' || data.web) platforms.push({ label: 'Web', linkLabel: 'Visit website', icon: iconWeb, url: data.web?.url })
+    return platforms
+}
+
+function getProjectUrl(value) {
+    if (typeof value !== 'string' || !value.trim()) return null
+    try {
+        const url = new URL(value, document.baseURI)
+        return ['http:', 'https:'].includes(url.protocol) ? url.href : null
+    } catch {
+        return null
     }
 }
 
-const iconApple = "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/iconApple.png"
-const iconAndroid = "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/iconAndroid.png"
-const iconWeb = "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/iconWeb.png"
-const iconReactNative = "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/181cc1027485d870fbbef196955c1af9d37ca09b/iconReactNative.svg"
+function setProjectImage(image, source, fallback) {
+    // Reset each time so a failed image on one project doesn't affect the next.
+    image.onerror = () => {
+        image.hidden = true
+        image.removeAttribute('src')
+        if (fallback) fallback.hidden = false
+    }
+    image.hidden = !source
+    if (fallback) fallback.hidden = !!source
+    if (source) image.src = source
+    else image.removeAttribute('src')
+}
 
-function createProjectElement(projectData) {
+function createProjectElement(project) {
+    const card = document.createElement('article')
+    card.className = 'projects-grid-item'
 
-    const divGridItem = document.createElement('div')
-    const imgBGImage = document.createElement('img')
-    const divContent = document.createElement('div')
-    const h1Title = document.createElement('h1')
+    const openButton = document.createElement('button')
+    openButton.type = 'button'
+    openButton.className = 'projects-grid-open-button'
+    openButton.setAttribute('aria-label', `View details for ${project.title}`)
+    openButton.setAttribute('aria-haspopup', 'dialog')
+    openButton.setAttribute('aria-controls', 'project-details-dialog')
+    openButton.addEventListener('click', () => openProjectDetails(project))
 
-    divGridItem.classList = "projects-grid-item"
+    const artwork = document.createElement('div')
+    artwork.className = 'projects-grid-item-artwork'
+    const initial = document.createElement('span')
+    initial.className = 'projects-grid-item-initial'
+    initial.textContent = project.title.charAt(0).toUpperCase()
+    initial.setAttribute('aria-hidden', 'true')
+    const image = document.createElement('img')
+    image.className = 'projects-grid-item-bg-image'
+    image.alt = ''
+    image.loading = 'lazy'
+    setProjectImage(image, project.icon, initial)
+    artwork.append(initial, image)
 
-    imgBGImage.classList = "projects-grid-item-bg-image"
-    if (projectData.icon == null ||
-        projectData.icon == undefined ||
-        projectData.icon.length == 0)
-        imgBGImage.src = "https://raw.githubusercontent.com/ravanar-sk/MyProfile-assets/main/placeholderImage.png"
-    else
-        imgBGImage.src = projectData.icon
+    const content = document.createElement('div')
+    content.className = 'projects-grid-item-content-container'
+    const title = document.createElement('h2')
+    title.className = 'projects-grid-title'
+    title.textContent = project.title
+    content.appendChild(title)
+    openButton.append(artwork, content)
 
-    divContent.classList = "projects-grid-item-content-container"
+    const tags = document.createElement('div')
+    tags.className = 'projects-tags-container'
+    const tagsRow = document.createElement('div')
+    tagsRow.className = 'projects-tags-row'
 
-    h1Title.classList = "projects-grid-title"
-    h1Title.innerText = projectData.title
-
-
-    divGridItem.appendChild(imgBGImage)
-    divGridItem.appendChild(divContent)
-    divContent.appendChild(h1Title)
-
-
-    const divProjectTagsContainer = document.createElement('div')
-    divProjectTagsContainer.className = "projects-tags-container"
-
-    const divProjectTagsRow = document.createElement('div')
-    divProjectTagsRow.className = "projects-tags-row"
-
-    if (projectData.projectData.type === "mobile") {
-
-        if (projectData.projectData.isReactNative === true) {
-            const divProjectTagsItemRN = document.createElement('img')
-            divProjectTagsItemRN.className = "projects-tags-item"
-            divProjectTagsItemRN.src = iconReactNative
-            divProjectTagsRow.appendChild(divProjectTagsItemRN)
+    getProjectPlatforms(project).forEach(platform => {
+        const icon = document.createElement('img')
+        icon.className = 'projects-tags-item'
+        icon.src = platform.icon
+        icon.alt = platform.label
+        const url = getProjectUrl(platform.url)
+        const tag = document.createElement(url ? 'a' : 'span')
+        tag.className = 'projects-platform-tag'
+        tag.title = platform.label
+        if (url) {
+            tag.href = url
+            tag.setAttribute('aria-label', `${project.title} — ${platform.linkLabel}`)
         }
+        tag.appendChild(icon)
+        tagsRow.appendChild(tag)
+    })
 
-        if (projectData.projectData.ios) {
-            const divProjectTagsItemApple = document.createElement('img')
-            divProjectTagsItemApple.className = "projects-tags-item"
-            divProjectTagsItemApple.src = iconApple
+    const hint = document.createElement('span')
+    hint.className = 'projects-view-details'
+    hint.textContent = 'VIEW DETAILS →'
+    content.appendChild(hint)
+    tags.appendChild(tagsRow)
+    card.append(openButton, tags)
+    return card
+}
 
-            if (projectData.projectData.ios.url.length > 0) {
-                const hyperTextElement = document.createElement('a')
-                hyperTextElement.href = projectData.projectData.ios.url
-                hyperTextElement.appendChild(divProjectTagsItemApple)
-                divProjectTagsRow.appendChild(hyperTextElement)
-            } else {
-                divProjectTagsRow.appendChild(divProjectTagsItemApple)
-            }
+function setupProjectDialog() {
+    const dialog = document.getElementById('project-details-dialog')
+    document.getElementById('project-details-close').addEventListener('click', closeProjectDetails)
+    dialog.addEventListener('cancel', event => {
+        event.preventDefault()
+        closeProjectDetails()
+    })
+    dialog.addEventListener('keydown', event => {
+        if (event.key !== 'Tab') return
+        const controls = dialog.querySelectorAll('button:not([disabled]), a[href]')
+        const first = controls[0]
+        const last = controls[controls.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault()
+            last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault()
+            first.focus()
         }
+    })
+    dialog.addEventListener('click', event => {
+        const bounds = dialog.getBoundingClientRect()
+        if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right ||
+            event.clientY < bounds.top || event.clientY > bounds.bottom)) closeProjectDetails()
+    })
+    dialog.addEventListener('close', () => {
+        window.clearTimeout(projectDialogCloseTimer)
+        dialog.classList.remove('is-closing')
+        document.body.classList.remove('project-dialog-open')
+    })
+}
 
-        if (projectData.projectData.android) {
-            const divProjectTagsItemAndroid = document.createElement('img')
-            divProjectTagsItemAndroid.className = "projects-tags-item"
-            divProjectTagsItemAndroid.src = iconAndroid
+function openProjectDetails(project) {
+    const dialog = document.getElementById('project-details-dialog')
+    const icon = document.getElementById('project-details-icon')
+    const banner = document.getElementById('project-details-banner')
+    const platforms = document.getElementById('project-details-platforms')
+    const links = document.getElementById('project-details-links')
 
-            if (projectData.projectData.android.url.length > 0) {
-                const hyperTextElement = document.createElement('a')
-                hyperTextElement.href = projectData.projectData.android.url
-                hyperTextElement.appendChild(divProjectTagsItemAndroid)
-                divProjectTagsRow.appendChild(hyperTextElement)
-            } else {
-                divProjectTagsRow.appendChild(divProjectTagsItemAndroid)
-            }
-        }
+    window.clearTimeout(projectDialogCloseTimer)
+    dialog.classList.remove('is-closing')
+    document.getElementById('project-details-title').textContent = project.title
+    document.getElementById('project-details-description').textContent = project.description?.trim() || 'More details about this project will be added soon.'
+    document.getElementById('project-details-initial').textContent = project.title.charAt(0).toUpperCase()
+    setProjectImage(icon, project.icon)
+    setProjectImage(banner, project.bannerImage || project.icon)
+    banner.classList.toggle('is-icon-fallback', !project.bannerImage)
+    platforms.replaceChildren()
+    links.replaceChildren()
 
-        
-
-    } else if (projectData.projectData.type === "web") {
-        const divProjectTagsItem = document.createElement('img')
-        divProjectTagsItem.className = "projects-tags-item"
-        divProjectTagsItem.src = iconWeb
-
-        if (projectData.projectData.web.url.length > 0) {
-            const hyperTextElement = document.createElement('a')
-            hyperTextElement.href = projectData.projectData.web.url
-            hyperTextElement.appendChild(divProjectTagsItem)
-            divProjectTagsRow.appendChild(hyperTextElement)
-        } else {
-            divProjectTagsRow.appendChild(divProjectTagsItem)
-        }
+    const addedLinks = new Set()
+    function addLink(label, source) {
+        const url = getProjectUrl(source)
+        // Treat a website URL with or without a trailing slash as the same link.
+        const key = url?.replace(/\/$/, '')
+        if (!url || addedLinks.has(key)) return
+        addedLinks.add(key)
+        const link = document.createElement('a')
+        link.className = 'project-dialog-link'
+        link.href = url
+        link.target = '_blank'
+        link.rel = 'noopener noreferrer'
+        const text = document.createElement('span')
+        text.textContent = label
+        const arrow = document.createElement('span')
+        arrow.textContent = '↗'
+        arrow.setAttribute('aria-hidden', 'true')
+        link.append(text, arrow)
+        link.setAttribute('aria-label', `${label} (opens in a new tab)`)
+        links.appendChild(link)
     }
 
-    
-    divProjectTagsContainer.appendChild(divProjectTagsRow)
-    divGridItem.appendChild(divProjectTagsContainer)
+    addLink('Visit website', project.website)
+    getProjectPlatforms(project).forEach(platform => {
+        const tag = document.createElement('span')
+        tag.className = 'project-dialog-platform'
+        tag.textContent = platform.label
+        platforms.appendChild(tag)
+        addLink(platform.linkLabel, platform.url)
+    })
+    document.getElementById('project-details-no-links').hidden = addedLinks.size > 0
+    document.querySelector('.project-dialog-scroll').scrollTop = 0
+    document.body.classList.add('project-dialog-open')
+    if (!dialog.open) dialog.showModal()
+}
 
-    return divGridItem
+function closeProjectDetails() {
+    const dialog = document.getElementById('project-details-dialog')
+    if (!dialog.open || dialog.classList.contains('is-closing')) return
+    dialog.classList.add('is-closing')
+    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220
+    projectDialogCloseTimer = window.setTimeout(() => dialog.close(), duration)
 }

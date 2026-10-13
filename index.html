@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.:Saravana Kumar K R (RavaNar ~ Ghostly)</title>
     <link rel="stylesheet" type="text/css" href="./app/css/index.css">
     <link rel="stylesheet" type="text/css" href="./app/css/home-page.css">
     <link rel="stylesheet" type="text/css" href="./app/css/about-me-page.css">
     <link rel="stylesheet" type="text/css" href="./app/css/projects-page.css">
+    <link rel="stylesheet" type="text/css" href="./app/css/project-details.css">
     <link rel="stylesheet" type="text/css" href="./app/css/education.css">
     <link rel="stylesheet" type="text/css" href="./app/css/workDetails.css">
     <link rel="stylesheet" type="text/css" href="./app/css/commonStyles.css">
@@ -230,6 +232,40 @@
         <!-- <div id="gallery-container" class="details-container" style="background-color: purple;"></div> -->
 
     </div>
+    <dialog id="project-details-dialog" class="project-dialog" aria-labelledby="project-details-title">
+        <button id="project-details-close" class="project-dialog-close" type="button" aria-label="Close project details" autofocus>&times;</button>
+        <div class="project-dialog-scroll">
+            <div class="project-dialog-banner">
+                <img id="project-details-banner" class="project-dialog-banner-image" alt="" hidden>
+                <div class="project-dialog-banner-overlay"></div>
+                <span class="project-dialog-eyebrow">PROJECT DETAILS</span>
+            </div>
+            <div class="project-dialog-content">
+                <header class="project-dialog-header">
+                    <div class="project-dialog-icon-container">
+                        <img id="project-details-icon" class="project-dialog-icon" alt="" hidden>
+                        <span id="project-details-initial" class="project-dialog-initial" aria-hidden="true"></span>
+                    </div>
+                    <div class="project-dialog-heading">
+                        <h2 id="project-details-title"></h2>
+                        <div id="project-details-platforms" class="project-dialog-platforms" aria-label="Platforms"></div>
+                    </div>
+                </header>
+                <div class="project-dialog-body">
+                    <section class="project-dialog-about" aria-labelledby="project-details-about-heading">
+                        <h3 id="project-details-about-heading" class="project-dialog-section-title">ABOUT THE PROJECT</h3>
+                        <p id="project-details-description"></p>
+                    </section>
+                    <section class="project-dialog-explore" aria-labelledby="project-details-links-heading">
+                        <h3 id="project-details-links-heading" class="project-dialog-section-title">EXPLORE PROJECT</h3>
+                        <div id="project-details-links" class="project-dialog-links"></div>
+                        <p id="project-details-no-links" class="project-dialog-note" hidden>A public project link isn't available yet.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
     <script type="text/javascript" src="./app/resources/json/user-data.js"></script>
     <script type="text/javascript" src="./app/resources/json/projects.js"></script>
     <script type="text/javascript" src="./app/resources/json/work-data.js"></script>

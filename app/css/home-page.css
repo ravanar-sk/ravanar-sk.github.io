@@ -119,3 +119,25 @@
     background-color: white; 
     margin-left: 0px;
 }
+
+@media (max-width: 700px) {
+    #home-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    #profile-image-container {
+        width: 45%;
+        max-width: 45%;
+    }
+
+    #home-page-about-mename-container {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #home-page-name {
+        font-size: clamp(28px, 7vw, 44px);
+    }
+}
