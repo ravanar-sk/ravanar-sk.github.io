@@ -169,10 +169,28 @@ body.project-dialog-open {
 }
 
 .project-dialog-platform {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 6px 12px;
     border: 1px solid #ffffff26;
     border-radius: 4px;
     color: #bbb;
+    font-size: 12px;
+}
+
+.project-dialog-platform img {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.project-dialog-build-method {
+    margin-top: 12px;
+}
+
+.project-dialog-build-method .project-build-badge {
     font-size: 12px;
 }
 

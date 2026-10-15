@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-10-15
+
+### Added
+
+- Badminton Score Tracking, Bingo - Offline, and bidNplay as personal iOS projects,
+  with local App Store artwork, short descriptions, and App Store links.
+- iOS links on the existing Egypt History, QWERTY Warrior, Turkey History, Qatar History,
+  and Kanakk records. These projects now use `flutter` and show both mobile platforms.
+- Build-method badges on project cards and details popups, driven by the predefined
+  `ai`, `mortals`, and `mortals-and-ai` values confirmed by the project owner.
+- Eight personal Android projects with bundled Play Store icons, short descriptions,
+  and Google Play links: Developer Options Shortcut, Language Shortcut, Turkey History,
+  Egypt History, Qatar History, QWERTY Warrior, Kanakk, and Movie Info.
+- A Flutter filter for the personal Flutter projects.
+- React JS and Flutter framework icons alongside the existing React Native icon,
+  selected automatically from each project's type. Bundled the Flutter SVG locally.
+- Icons beside platform and framework names in the project details popup.
+
+### Changed
+
+- Updated each project's `projectData.type` to a value from `projectTypes`, retaining
+  only its supported platform objects and removing the `isReactNative` flag.
+- Updated project badges, card labels, and filters to use the project type, including
+  React Native variants. Corrected DHI Cubes to use the web type.
+- Documented the simplified project data format and available type choices.
+
+### Fixed
+
+- Project cards remaining expanded after closing their details popup and moving the pointer away.
+  Card focus effects now follow keyboard navigation while preserving focus restoration,
+  including Escape dismissal of a popup originally opened with a pointer.
+
 ## 2026-10-13
 
 ### Added

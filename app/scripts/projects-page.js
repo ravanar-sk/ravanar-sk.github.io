@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const iconApple = "./app/resources/images/icons/iconApple.png"
 const iconAndroid = "./app/resources/images/icons/iconAndroid.png"
 const iconWeb = "./app/resources/images/icons/iconWeb.png"
-const iconReactNative = "./app/resources/images/icons/iconReactNative.svg"
+const iconReact = "./app/resources/images/icons/iconReactNative.svg"
+const iconFlutter = "./app/resources/images/icons/iconFlutter.svg"
 
 let projectDialogCloseTimer
+let projectDialogOpenedWithPointer = false
 const projectCards = new Map()
 
 function addingProjectData() {
@@ -28,7 +30,8 @@ function setupProjectFilters() {
         { label: 'iOS', platform: 'iOS' },
         { label: 'Android', platform: 'Android' },
         { label: 'Web', platform: 'Web' },
-        { label: 'React Native', platform: 'React Native' }
+        { label: 'React Native', platform: 'React Native' },
+        { label: 'Flutter', platform: 'Flutter' }
     ]
 
     options.forEach(({ label, platform }, index) => {
@@ -84,11 +87,34 @@ function getProjectInitials(project) {
 function getProjectPlatforms(project) {
     const data = project.projectData || {}
     const platforms = []
-    if (data.isReactNative) platforms.push({ label: 'React Native', icon: iconReactNative })
+    if (data.type === 'web-react') platforms.push({ label: 'React JS', icon: iconReact })
+    if (data.type?.startsWith('react-native')) platforms.push({ label: 'React Native', icon: iconReact })
+    if (data.type?.startsWith('flutter')) platforms.push({ label: 'Flutter', icon: iconFlutter })
     if (data.ios) platforms.push({ label: 'iOS', linkLabel: 'App Store', icon: iconApple, url: data.ios.url })
     if (data.android) platforms.push({ label: 'Android', linkLabel: 'Google Play', icon: iconAndroid, url: data.android.url })
-    if (data.type === 'web' || data.web) platforms.push({ label: 'Web', linkLabel: 'Visit website', icon: iconWeb, url: data.web?.url })
+    if (data.type?.startsWith('web') || data.web) platforms.push({ label: 'Web', linkLabel: 'Visit website', icon: iconWeb, url: data.web?.url })
     return platforms
+}
+
+function getProjectTypeLabel(project, platforms) {
+    const type = project.projectData?.type || ''
+    if (type.startsWith('react-native')) return 'React Native app'
+    if (type.startsWith('flutter')) return 'Flutter app'
+    if (type === 'electron') return 'Electron desktop app'
+    if (type === 'web-react') return 'React web project'
+    if (type === 'web-angular') return 'Angular web project'
+    if (platforms.some(platform => platform.label === 'Web')) return 'Web project'
+    return platforms.length ? `${platforms.map(platform => platform.label).join(' & ')} app` : 'Mobile app'
+}
+
+function createProjectBuildBadge(project) {
+    const method = project.buildMethod
+    if (!Object.hasOwn(projectBuildMethods, method)) return null
+    const badge = document.createElement('span')
+    badge.className = 'project-build-badge'
+    badge.dataset.buildMethod = method
+    badge.textContent = projectBuildMethods[method]
+    return badge
 }
 
 function getProjectUrl(value) {
@@ -117,6 +143,10 @@ function setProjectImage(image, source, fallback) {
 function createProjectElement(project) {
     const card = document.createElement('li')
     card.className = 'projects-grid-item'
+    card.addEventListener('keydown', () => card.classList.remove('is-pointer-restored'))
+    card.addEventListener('focusout', event => {
+        if (!card.contains(event.relatedTarget)) card.classList.remove('is-pointer-restored')
+    })
 
     const openButton = document.createElement('button')
     openButton.type = 'button'
@@ -124,7 +154,7 @@ function createProjectElement(project) {
     openButton.setAttribute('aria-label', `View details for ${project.title}`)
     openButton.setAttribute('aria-haspopup', 'dialog')
     openButton.setAttribute('aria-controls', 'project-details-dialog')
-    openButton.addEventListener('click', () => openProjectDetails(project))
+    openButton.addEventListener('click', event => openProjectDetails(project, event.detail > 0))
 
     const artwork = document.createElement('div')
     artwork.className = 'projects-grid-item-artwork'
@@ -144,13 +174,16 @@ function createProjectElement(project) {
     const platforms = getProjectPlatforms(project)
     const category = document.createElement('span')
     category.className = 'projects-card-type'
-    category.textContent = project.projectData?.isReactNative ? 'React Native app' :
-        platforms.some(platform => platform.label === 'Web') ? 'Web project' :
-        `${platforms.map(platform => platform.label).join(' & ')} app`
+    category.textContent = getProjectTypeLabel(project, platforms)
     const title = document.createElement('h4')
     title.className = 'projects-grid-title'
     title.textContent = project.title
     content.append(category, title)
+    const buildBadge = createProjectBuildBadge(project)
+    if (buildBadge) {
+        content.appendChild(buildBadge)
+        openButton.setAttribute('aria-label', `View details for ${project.title} — ${buildBadge.textContent}`)
+    }
     if (project.description?.trim()) {
         const description = document.createElement('span')
         description.className = 'projects-card-description'
@@ -226,17 +259,24 @@ function setupProjectDialog() {
         window.clearTimeout(projectDialogCloseTimer)
         dialog.classList.remove('is-closing')
         document.body.classList.remove('project-dialog-open')
+        // Escape can make restored focus visible even after a pointer-opened dialog.
+        if (projectDialogOpenedWithPointer) {
+            document.activeElement.closest('.projects-grid-item')?.classList.add('is-pointer-restored')
+        }
+        projectDialogOpenedWithPointer = false
     })
 }
 
-function openProjectDetails(project) {
+function openProjectDetails(project, openedWithPointer = false) {
     const dialog = document.getElementById('project-details-dialog')
     const icon = document.getElementById('project-details-icon')
     const banner = document.getElementById('project-details-banner')
     const platforms = document.getElementById('project-details-platforms')
+    const buildMethod = document.getElementById('project-details-build-method')
     const links = document.getElementById('project-details-links')
 
     window.clearTimeout(projectDialogCloseTimer)
+    projectDialogOpenedWithPointer = openedWithPointer
     dialog.classList.remove('is-closing')
     document.getElementById('project-details-title').textContent = project.title
     document.getElementById('project-details-description').textContent = project.description?.trim() || 'More details about this project will be added soon.'
@@ -245,6 +285,10 @@ function openProjectDetails(project) {
     setProjectImage(banner, project.bannerImage || project.icon)
     banner.classList.toggle('is-icon-fallback', !project.bannerImage)
     platforms.replaceChildren()
+    buildMethod.replaceChildren()
+    const buildBadge = createProjectBuildBadge(project)
+    buildMethod.hidden = !buildBadge
+    if (buildBadge) buildMethod.appendChild(buildBadge)
     links.replaceChildren()
 
     const addedLinks = new Set()
@@ -273,7 +317,13 @@ function openProjectDetails(project) {
     getProjectPlatforms(project).forEach(platform => {
         const tag = document.createElement('span')
         tag.className = 'project-dialog-platform'
-        tag.textContent = platform.label
+        const icon = document.createElement('img')
+        icon.src = platform.icon
+        icon.alt = ''
+        icon.setAttribute('aria-hidden', 'true')
+        const label = document.createElement('span')
+        label.textContent = platform.label
+        tag.append(icon, label)
         platforms.appendChild(tag)
         addLink(platform.linkLabel, platform.url)
     })

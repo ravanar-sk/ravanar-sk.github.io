@@ -34,13 +34,23 @@ the viewport width and height on desktop and expands on smaller screens. Close i
 close button, Escape, or a click outside it. Platform icons are always visible at the top
 right of each card on a semi-transparent glass layer with backdrop blur; linked icons
 open their store or website pages. The title gradient fades from the bottom left. Hovering
-or focusing a card enlarges its title, previews its description, and reveals the animated
-"View details" cue. Platform filters help browse iOS, Android, web, and React Native projects;
+or keyboard focusing a card enlarges its title, previews its description, and reveals the animated
+"View details" cue. Platform filters help browse iOS, Android, web, React Native, and Flutter projects;
 the count updates to match the visible cards.
+Closing a popup restores focus to its card. Mouse-restored focus does not keep the card
+expanded after the pointer leaves, including when Escape closes a mouse-opened popup.
+Keyboard navigation still shows the expanded preview and visible focus indicator.
 Projects are grouped into Personal projects first, then Professional projects. Set each
 record's `isPersonal` flag to `true` for personal projects or `false` for professional
 projects. Missing flags default to professional. Platform filters apply to both groups
 and hide groups without matching cards.
+
+Personal projects include published Android utilities, Flutter apps, React Native apps,
+and native iOS apps. Their store icons are bundled locally; listing links and artwork
+sources are documented in [the project artwork README](app/resources/images/projects/README.md).
+The five Flutter projects share one card per app, with both Android and iOS links and
+the `flutter` type. Android utilities and Movie Info remain Android-only; Badminton
+Score Tracking uses `react-native-ios`, and Bingo - Offline and bidNplay use `mobile-ios`.
 
 App artwork fills each card's background, with the project name at the bottom left over
 a dark gradient. App and platform icons are bundled under `app/resources/images` so they
@@ -51,12 +61,13 @@ Each record supports these fields:
 | Field | Used for |
 | --- | --- |
 | `isPersonal` | `true` for personal projects, `false` for professional; personal projects appear first |
+| `buildMethod` | A key from `projectBuildMethods`: `ai`, `mortals`, or `mortals-and-ai` |
 | `title` | Project name and accessible card label |
 | `description` | Full project description; line breaks are preserved |
 | `icon` | Card image and popup icon; use an image URL or a local image path |
 | `bannerImage` | Optional wide banner image; a landscape image works best |
 | `website` | Project website link |
-| `projectData` | Platform labels and iOS, Android, or web links |
+| `projectData` | A `type` from `projectTypes` and only the applicable `ios`, `android`, or `web` objects |
 
 For example:
 
@@ -64,6 +75,7 @@ For example:
 {
     priority: 0,
     isPersonal: true,
+    buildMethod: "mortals-and-ai",
     title: "My Profile",
     description: "A website created out of passion and love as a portfolio of myself.",
     website: "https://ravanar-sk.github.io/",
@@ -71,13 +83,31 @@ For example:
     bannerImage: "./app/resources/images/pictures/my-profile-banner.jpg",
     projectData: {
         type: "web",
-        isReactNative: false,
-        android: null,
-        ios: null,
         web: { url: "https://ravanar-sk.github.io/" }
     }
 }
 ```
+
+Each project displays its build method below the card title and in the details popup.
+Choose one of the predefined keys in `projectBuildMethods`: `ai` shows "Built using AI",
+`mortals` shows "Built by mortals", and `mortals-and-ai` shows "Built by mortals & AI".
+The labels are defined in the same data file. Missing or unrecognized values hide the
+badge until the project owner selects a valid value.
+
+Choose `projectData.type` from the `projectTypes` array in the data file. Use `mobile-ios`
+for native iOS-only apps, `mobile-android` for native Android-only apps, `mobile` for native
+apps on both platforms, and the appropriate `react-native` or `flutter` variant for those
+frameworks. Website types are `web`, `web-react`, or `web-angular`; Electron apps use `electron`.
+Include only the supported platform objects. An iOS-only app, for example, uses
+`projectData: { type: "mobile-ios", ios: { url: "" } }`. An empty URL keeps the platform
+badge visible without adding a link. Omit unused platform keys and the former
+`isReactNative` flag; React Native badges and filtering now use `type`.
+
+Framework icons appear in the grid badges and details popup: `web-react` shows React JS,
+`react-native`, `react-native-ios`, and `react-native-android` show React Native, and
+`flutter`, `flutter-ios`, and `flutter-android` show Flutter. React JS and React Native
+share the bundled React logo; the Flutter icon is bundled from the
+[official Flutter brand assets](https://flutter.dev/brand).
 
 The example banner path is illustrative: add your own image before setting it. Existing
 records start with `bannerImage: null`. Without a banner, the popup uses a softened version
