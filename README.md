@@ -21,8 +21,8 @@ preferences disable smooth scrolling and menu transitions.
 
 The Home section reads the name, `homeIntroduction`, and role labels from
 `app/resources/json/user-data.js`. The first two roles stay visible, while the remaining
-roles gently fade between labels. View projects opens the project grid; Contact me scrolls
-to the About contact buttons. Animations respect the reduced-motion preference.
+roles gently fade between labels. Contact me scrolls to the About contact buttons.
+Animations respect the reduced-motion preference.
 
 ## Project details
 
@@ -130,7 +130,8 @@ Both timelines and popups adapt to smaller screens.
 
 ## About me
 
-The About section uses the biography, name, role labels, email, phone, and GitHub link
+The About section uses the biography, name, role labels, email, phone, GitHub, and LinkedIn links
 from `app/resources/json/user-data.js`, alongside the existing local portrait photos.
 Update that data file to change the introduction, role badges, or contact details.
 Email, WhatsApp, and Call actions use the email address and first phone number in that file.
+The LinkedIn action uses the entry in `socialMediaLinks` and opens in a new tab.

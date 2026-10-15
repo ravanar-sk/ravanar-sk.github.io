@@ -166,22 +166,10 @@
     object-fit: contain;
 }
 
-.about-action-primary {
-    border-color: #ededed;
-    background: #ededed;
-    color: #151515;
-    font-weight: 600;
-}
-
 .about-action:hover {
     transform: translateY(-2px);
     border-color: #ffffff66;
     background: #ffffff0d;
-}
-
-.about-action-primary:hover {
-    border-color: white;
-    background: white;
 }
 
 .about-action:focus-visible {

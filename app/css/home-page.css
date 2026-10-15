@@ -153,13 +153,6 @@
     transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.home-action-primary {
-    border-color: #ededed;
-    background: #ededed;
-    color: #151515;
-    font-weight: 600;
-}
-
 .home-action-label {
     display: inline-flex;
     align-items: center;
@@ -178,11 +171,6 @@
     transform: translateY(-2px);
     border-color: #ffffff66;
     background: #ffffff0d;
-}
-
-.home-action-primary:hover {
-    border-color: white;
-    background: white;
 }
 
 .home-action:focus-visible {

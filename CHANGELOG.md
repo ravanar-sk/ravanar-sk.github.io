@@ -4,6 +4,7 @@
 
 ### Added
 
+- A LinkedIn contact action in About Me, using the existing profile data and a local icon.
 - Badminton Score Tracking, Bingo - Offline, and bidNplay as personal iOS projects,
   with local App Store artwork, short descriptions, and App Store links.
 - iOS links on the existing Egypt History, QWERTY Warrior, Turkey History, Qatar History,
@@ -31,6 +32,11 @@
 - Project cards remaining expanded after closing their details popup and moving the pointer away.
   Card focus effects now follow keyboard navigation while preserving focus restoration,
   including Escape dismissal of a popup originally opened with a pointer.
+
+### Removed
+
+- The View projects shortcut from Home and the Explore projects shortcut from About Me,
+  along with their unused button styles.
 
 ## 2026-10-13
 

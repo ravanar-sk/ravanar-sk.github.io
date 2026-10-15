@@ -34,4 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         link.href = github.link
         link.hidden = false
     }
+
+    const linkedin = userData.socialMediaLinks.find(item => item.title.toLowerCase() === 'linkedin')
+    if (linkedin?.link) {
+        const link = document.getElementById('about-me-linkedin')
+        link.href = linkedin.link
+        link.hidden = false
+    }
 })
