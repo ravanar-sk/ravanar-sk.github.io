@@ -1,5 +1,34 @@
 # Changelog
 
+## 2026-10-20
+
+### Changed
+
+- Ordered project cards within each category by build method: `mortals`,
+  `mortals-and-ai`, then `ai`, retaining their relative order within each method.
+- Added the Google Play link to the existing Badminton Score Tracking personal project.
+  It now uses `react-native` and displays both iOS and Android badges and store links.
+
+## 2026-10-16
+
+### Added
+
+- A `contribution` field on every project and a "My contribution" section in the details
+  popup, with preserved line breaks and a placeholder until the owner adds their text.
+- QSFA, Qatar Stars League, Q Weather, and Education City as professional native iOS
+  projects, with local App Store icons, short descriptions, and store links.
+- Qatar Rail as a professional Kony project with iOS and Android links and local artwork.
+- Kony framework badges, a local K monogram, and a project filter.
+- The owner's confirmed "Built by mortals" tag on all five new professional projects.
+
+### Changed
+
+- Refreshed the existing AL JNOUB and Qatar Cancer Society descriptions and iOS links,
+  keeping one record per app.
+- Corrected ONEPORT and AL JNOUB to native iOS-only projects, removing their Android
+  links and badges and the React Native label from AL JNOUB.
+- Documented the professional app artwork sources and Kony project type.
+
 ## 2026-10-15
 
 ### Added

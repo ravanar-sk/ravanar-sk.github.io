@@ -35,7 +35,7 @@ close button, Escape, or a click outside it. Platform icons are always visible a
 right of each card on a semi-transparent glass layer with backdrop blur; linked icons
 open their store or website pages. The title gradient fades from the bottom left. Hovering
 or keyboard focusing a card enlarges its title, previews its description, and reveals the animated
-"View details" cue. Platform filters help browse iOS, Android, web, React Native, and Flutter projects;
+"View details" cue. Platform filters help browse iOS, Android, web, React Native, Flutter, and Kony projects;
 the count updates to match the visible cards.
 Closing a popup restores focus to its card. Mouse-restored focus does not keep the card
 expanded after the pointer leaves, including when Escape closes a mouse-opened popup.
@@ -44,13 +44,23 @@ Projects are grouped into Personal projects first, then Professional projects. S
 record's `isPersonal` flag to `true` for personal projects or `false` for professional
 projects. Missing flags default to professional. Platform filters apply to both groups
 and hide groups without matching cards.
+Within each group, cards are ordered by build method: `mortals`, then `mortals-and-ai`,
+then `ai`. Projects with the same build method keep their existing relative order;
+missing or unrecognized build methods appear last. Platform filters preserve this order.
 
 Personal projects include published Android utilities, Flutter apps, React Native apps,
 and native iOS apps. Their store icons are bundled locally; listing links and artwork
 sources are documented in [the project artwork README](app/resources/images/projects/README.md).
 The five Flutter projects share one card per app, with both Android and iOS links and
 the `flutter` type. Android utilities and Movie Info remain Android-only; Badminton
-Score Tracking uses `react-native-ios`, and Bingo - Offline and bidNplay use `mobile-ios`.
+Score Tracking uses `react-native` with both Android and iOS links, and Bingo - Offline
+and bidNplay use `mobile-ios`.
+
+Professional projects also include QSFA, Qatar Stars League, Q Weather, and Education City
+as native iOS apps, plus Qatar Rail as a Kony app with iOS and Android store links.
+ONEPORT and AL JNOUB are native iOS-only projects; Qatar Cancer Society keeps one card
+with both platform links.
+The new professional apps use the owner's confirmed `mortals` build-method value.
 
 App artwork fills each card's background, with the project name at the bottom left over
 a dark gradient. App and platform icons are bundled under `app/resources/images` so they
@@ -64,6 +74,7 @@ Each record supports these fields:
 | `buildMethod` | A key from `projectBuildMethods`: `ai`, `mortals`, or `mortals-and-ai` |
 | `title` | Project name and accessible card label |
 | `description` | Full project description; line breaks are preserved |
+| `contribution` | Your work on the project, displayed under "My contribution" in the popup; line breaks are preserved |
 | `icon` | Card image and popup icon; use an image URL or a local image path |
 | `bannerImage` | Optional wide banner image; a landscape image works best |
 | `website` | Project website link |
@@ -78,6 +89,7 @@ For example:
     buildMethod: "mortals-and-ai",
     title: "My Profile",
     description: "A website created out of passion and love as a portfolio of myself.",
+    contribution: "",
     website: "https://ravanar-sk.github.io/",
     icon: null,
     bannerImage: "./app/resources/images/pictures/my-profile-banner.jpg",
@@ -88,6 +100,11 @@ For example:
 }
 ```
 
+Fill in each project's `contribution` string with your responsibilities and the features
+you worked on. The popup displays it beneath the project description in a "My contribution"
+section. Fields start empty until the owner supplies the text; a blank or missing value
+shows "Contribution details will be added soon." Use `\n` for separate lines.
+
 Each project displays its build method below the card title and in the details popup.
 Choose one of the predefined keys in `projectBuildMethods`: `ai` shows "Built using AI",
 `mortals` shows "Built by mortals", and `mortals-and-ai` shows "Built by mortals & AI".
@@ -97,7 +114,8 @@ badge until the project owner selects a valid value.
 Choose `projectData.type` from the `projectTypes` array in the data file. Use `mobile-ios`
 for native iOS-only apps, `mobile-android` for native Android-only apps, `mobile` for native
 apps on both platforms, and the appropriate `react-native` or `flutter` variant for those
-frameworks. Website types are `web`, `web-react`, or `web-angular`; Electron apps use `electron`.
+frameworks. Kony apps use `kony`. Website types are `web`, `web-react`, or `web-angular`;
+Electron apps use `electron`.
 Include only the supported platform objects. An iOS-only app, for example, uses
 `projectData: { type: "mobile-ios", ios: { url: "" } }`. An empty URL keeps the platform
 badge visible without adding a link. Omit unused platform keys and the former
@@ -105,7 +123,8 @@ badge visible without adding a link. Omit unused platform keys and the former
 
 Framework icons appear in the grid badges and details popup: `web-react` shows React JS,
 `react-native`, `react-native-ios`, and `react-native-android` show React Native, and
-`flutter`, `flutter-ios`, and `flutter-android` show Flutter. React JS and React Native
+`flutter`, `flutter-ios`, and `flutter-android` show Flutter. `kony` shows a local K monogram.
+React JS and React Native
 share the bundled React logo; the Flutter icon is bundled from the
 [official Flutter brand assets](https://flutter.dev/brand).
 

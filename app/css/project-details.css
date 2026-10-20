@@ -203,6 +203,13 @@ body.project-dialog-open {
     border-top: 1px solid #ffffff1a;
 }
 
+.project-dialog-overview {
+    display: grid;
+    align-content: start;
+    gap: 32px;
+    min-width: 0;
+}
+
 .project-dialog-section-title {
     margin: 0 0 18px;
     color: #888;
@@ -212,6 +219,7 @@ body.project-dialog-open {
 }
 
 #project-details-description,
+#project-details-contribution,
 .project-dialog-note {
     margin: 0;
     color: #bbb;

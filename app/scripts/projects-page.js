@@ -9,13 +9,22 @@ const iconAndroid = "./app/resources/images/icons/iconAndroid.png"
 const iconWeb = "./app/resources/images/icons/iconWeb.png"
 const iconReact = "./app/resources/images/icons/iconReactNative.svg"
 const iconFlutter = "./app/resources/images/icons/iconFlutter.svg"
+const iconKony = "./app/resources/images/icons/iconKony.svg"
 
 let projectDialogCloseTimer
 let projectDialogOpenedWithPointer = false
 const projectCards = new Map()
+const projectBuildMethodPriority = new Map([
+    ['mortals', 0],
+    ['mortals-and-ai', 1],
+    ['ai', 2]
+])
 
 function addingProjectData() {
-    projects.forEach(project => {
+    const sortedProjects = [...projects].sort((first, second) =>
+        (projectBuildMethodPriority.get(first.buildMethod) ?? projectBuildMethodPriority.size) -
+        (projectBuildMethodPriority.get(second.buildMethod) ?? projectBuildMethodPriority.size))
+    sortedProjects.forEach(project => {
         const category = getProjectCategory(project)
         const card = createProjectElement(project)
         projectCards.set(project, card)
@@ -31,7 +40,8 @@ function setupProjectFilters() {
         { label: 'Android', platform: 'Android' },
         { label: 'Web', platform: 'Web' },
         { label: 'React Native', platform: 'React Native' },
-        { label: 'Flutter', platform: 'Flutter' }
+        { label: 'Flutter', platform: 'Flutter' },
+        { label: 'Kony', platform: 'Kony' }
     ]
 
     options.forEach(({ label, platform }, index) => {
@@ -90,6 +100,7 @@ function getProjectPlatforms(project) {
     if (data.type === 'web-react') platforms.push({ label: 'React JS', icon: iconReact })
     if (data.type?.startsWith('react-native')) platforms.push({ label: 'React Native', icon: iconReact })
     if (data.type?.startsWith('flutter')) platforms.push({ label: 'Flutter', icon: iconFlutter })
+    if (data.type === 'kony') platforms.push({ label: 'Kony', icon: iconKony })
     if (data.ios) platforms.push({ label: 'iOS', linkLabel: 'App Store', icon: iconApple, url: data.ios.url })
     if (data.android) platforms.push({ label: 'Android', linkLabel: 'Google Play', icon: iconAndroid, url: data.android.url })
     if (data.type?.startsWith('web') || data.web) platforms.push({ label: 'Web', linkLabel: 'Visit website', icon: iconWeb, url: data.web?.url })
@@ -100,6 +111,7 @@ function getProjectTypeLabel(project, platforms) {
     const type = project.projectData?.type || ''
     if (type.startsWith('react-native')) return 'React Native app'
     if (type.startsWith('flutter')) return 'Flutter app'
+    if (type === 'kony') return 'Kony app'
     if (type === 'electron') return 'Electron desktop app'
     if (type === 'web-react') return 'React web project'
     if (type === 'web-angular') return 'Angular web project'
@@ -280,6 +292,7 @@ function openProjectDetails(project, openedWithPointer = false) {
     dialog.classList.remove('is-closing')
     document.getElementById('project-details-title').textContent = project.title
     document.getElementById('project-details-description').textContent = project.description?.trim() || 'More details about this project will be added soon.'
+    document.getElementById('project-details-contribution').textContent = project.contribution?.trim() || 'Contribution details will be added soon.'
     document.getElementById('project-details-initial').textContent = getProjectInitials(project)
     setProjectImage(icon, project.icon)
     setProjectImage(banner, project.bannerImage || project.icon)
